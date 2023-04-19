@@ -1,4 +1,4 @@
-export let modules = [
+let modules = [
      {
           id:1,
           title: 'Introduction to the Security Industry',
@@ -120,3 +120,5 @@ export let modules = [
           
      }
 ];
+
+export default modules;

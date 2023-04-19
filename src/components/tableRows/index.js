@@ -1,11 +1,20 @@
 import React from 'react';
 
-const TableRow = (props) =>{
+const TableRow = ({id, title, duration, progress}) =>{
      return (
           <>
               <tr>
                     <td>
-                         {props.title}
+                         {"Section " + id}
+                    </td>
+                    <td>
+                         {title}
+                    </td>
+                    <td>
+                         {duration}
+                    </td>
+                    <td>
+                         {progress}
                     </td>
               </tr>
           </>
