@@ -7,22 +7,10 @@ import Header from "../../layout/header";
 const Progress = () => {
 
      const moduleList = modules;
-     window.onscroll = ()=>{
-          var navbar = document.getElementById("position");
-          var content = document.getElementById("content");
-          var sticky = content.offsetTop; 
-           if (window.pageYOffset >= sticky) {
-               navbar.classList.add("sticky")
-               console.log('Added')
-          } else {
-               navbar.classList.remove("sticky");
-               console.log('removed')
-             }
-     }
 
      return (
           <>
-               <Header position={'position'}/>
+               <Header/>
                <div className="comp-container">
                     <div className="comp-title">
                          <h1>Training</h1>

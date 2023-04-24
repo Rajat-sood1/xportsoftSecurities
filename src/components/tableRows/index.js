@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+
 const TableRow = ({id, title, duration, progress}) =>{
      return (
           <>
@@ -9,10 +10,12 @@ const TableRow = ({id, title, duration, progress}) =>{
                          {"Section " + id}
                     </td>
                     <td className="w-40 border">
-                         {title}
+                         <h3 className='t-title'>
+                              {title}
+                         </h3>
                     </td>
                     <td className="w-8 border">
-                         {duration}
+                         {duration* 10}
                     </td>
                     <td className="w-8 border">
                          {progress}
@@ -24,7 +27,7 @@ const TableRow = ({id, title, duration, progress}) =>{
                          Done
                     </td>
                     <td className="w-25 border" >
-                         <button className='btn'><NavLink to='/Module'>Review</NavLink></button>
+                    <NavLink to='/Module'> <button className='btn'>Review</button></NavLink>
                     </td>
               </tr>
           </>

@@ -25,7 +25,7 @@ const SignInUp = () => {
                               <input type="text" placeholder="Name" required />
                               <input type="email" placeholder="Email" required />
                               <input type="password" placeholder="Password" required />
-                              <button type="submit">Sign Up</button>
+                              <button type="submit" className="btn">Sign Up</button>
                          </form>
                     </div>
 
@@ -45,7 +45,7 @@ const SignInUp = () => {
                               <a href="google.com">Forgot your password?</a>
                               
                               
-                              <button type="submit"><NavLink to='/dashboard'>Sign In</NavLink></button>
+                              <button className="btn" type="submit"><NavLink to='/dashboard'>Sign In</NavLink></button>
                          </form>
                     </div>
 
@@ -57,7 +57,7 @@ const SignInUp = () => {
                               <div className="overlay-panel overlay-left">
                                    <h1>Welcome Back!</h1>
                                    <div className="logo logo-s"></div>
-                                   <button className="ghost" id="signIn" onClick={() => setClass(' ')}>Sign In</button>
+                                   <button className="ghost btn" id="signIn" onClick={() => setClass(' ')}>Sign In</button>
                               </div>
 
                               {/* NAVIGATE TO SIGN UP PAGE */}
@@ -65,7 +65,7 @@ const SignInUp = () => {
                                    <h1>Hello, Friend!</h1>
                                    <div className="logo logo-s"></div>
 
-                                   <button className="ghost" id="signUp" onClick={() => setClass('right-panel-active')}>Sign Up</button>
+                                   <button className="ghost btn" id="signUp" onClick={() => setClass('right-panel-active')}>Sign Up</button>
                               </div>
                          </div>
                     </div>

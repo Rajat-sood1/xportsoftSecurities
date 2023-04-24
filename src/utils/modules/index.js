@@ -6,7 +6,7 @@ let modules = [
           isCompleted: false,
           Marks:0,
           duration:60000,
-          progress: 0
+          progress: "00:00:00"
 
      },
      
@@ -17,7 +17,7 @@ let modules = [
           isCompleted: false,
           Marks:0,
           duration:60000,
-          progress: 0
+          progress: "00:00:00"
           
      },
      
@@ -28,7 +28,7 @@ let modules = [
           isCompleted: false,
           Marks:0,
           duration:60000,
-          progress: 0
+          progress: "00:00:00"
           
      },
      
@@ -39,7 +39,7 @@ let modules = [
           isCompleted: false,
           Marks:0,
           duration:60000,
-          progress: 0
+          progress: "00:00:00"
           
      },
      
@@ -50,7 +50,7 @@ let modules = [
           isCompleted: false,
           Marks:0,
           duration:60000,
-          progress: 0
+          progress: "00:00:00"
           
      },
      
@@ -61,7 +61,7 @@ let modules = [
           isCompleted: false,
           Marks:0,
           duration:60000,
-          progress: 0
+          progress: "00:00:00"
           
      },
      
@@ -72,7 +72,7 @@ let modules = [
           isCompleted: false,
           Marks:0,
           duration:60000,
-          progress: 0
+          progress: "00:00:00"
           
      },
      
@@ -83,7 +83,7 @@ let modules = [
           isCompleted: false,
           Marks:0,
           duration:60000,
-          progress: 0
+          progress: "00:00:00"
           
      },
      
@@ -94,7 +94,7 @@ let modules = [
           isCompleted: false,
           Marks:0,
           duration:60000,
-          progress: 0
+          progress: "00:00:00"
           
      },
      
@@ -105,7 +105,7 @@ let modules = [
           isCompleted: false,
           Marks:0,
           duration:60000,
-          progress: 0
+          progress: "00:00:00"
           
      },
      
@@ -116,7 +116,7 @@ let modules = [
           isCompleted: false,
           Marks:0,
           duration:60000,
-          progress: 0
+          progress: "00:00:00"
           
      }
 ];

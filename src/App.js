@@ -5,16 +5,17 @@ import Progress from './pages/progress/index'
 import './assets/styles/index.css'
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import Module from './pages/Module';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-        <Route path='/' element={<div className='body'><SignInUp/></div>}/>
-          <Route path='/dashboard' element={<div className='component'><Progress/></div>}/>
+        <Route path='/' element={<div className='component'><SignInUp/></div>}/>
+          <Route path='/dashboard' element={<div className='component'><Dashboard/></div>}/>
+          <Route path='/Training' element={<div className='component'><Progress/></div>}/>
           <Route path='/Module' element={<div className='component'><Module/></div>}/>
-          
         </Routes>
         
       </BrowserRouter>
