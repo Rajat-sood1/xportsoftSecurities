@@ -15,7 +15,7 @@ const Dashboard = () =>{
                     <h1>Dashboard</h1>
                </div>
                <section className="module-sec">
-                    <Cards duration={new Date().getTime()} progress={moduleList[0].progress} status={'Not-Started'}/>
+                    <Cards duration={new Date().getDate()} progress={moduleList[0].progress} status={'Not-Started'}/>
                </section>
           </div>
           </>

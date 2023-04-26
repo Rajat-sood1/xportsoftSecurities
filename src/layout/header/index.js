@@ -1,22 +1,20 @@
-import React from "react";
-import Users from "../../utils/users/index"
+import React, { useRef } from "react";
+// import Users from "../../utils/users/index"
 import { NavLink } from "react-router-dom";
 
 const Header = () => {
 
-     const users = Users;
-     window.onscroll = ()=>{
-          var navbar = document.getElementById("position");
-          var content = document.getElementById("content");
-          var sticky = content.offsetTop; 
-          if(content){
+     const navbar = useRef();
+     const content = useRef();
+     window.onscroll = () => {
+          let sticky = content.current.offsetTop;
+          if (content) {
 
                if (window.pageYOffset >= sticky) {
-                   navbar.classList.add("sticky")
-              } else {
-                   navbar.classList.remove("sticky");
-                 }
-
+                    navbar.current.classList.add("sticky")
+               } else {
+                    navbar.current.classList.remove("sticky");
+               }
           }
      }
      return (
@@ -38,22 +36,23 @@ const Header = () => {
                               <div className="user">
                                    <div className="profile d-flex">
                                         <div className="user-details">
-                                             <p>{users?.Name ? "Rajat" : "John Doe"}</p>
+                                             <p>John Doe</p>
                                              <sub>student</sub>
                                         </div>
+                                        <span className="dropdown">	&#9662;</span>
                                    </div>
                               </div>
                          </div>
 
                          {/*       NAVBAR          */}
-                         <div className="navbar" id={'position'}>
+                         <div className="navbar" ref={navbar}>
                               <ul className="nav-links">
-                              <NavLink to='/dashboard'><li>Dashboard</li></NavLink>
+                                   <NavLink to='/dashboard'><li>Dashboard</li></NavLink>
                                    <NavLink to='/training'><li>Training</li></NavLink>
                                    <li>Settings</li>
                               </ul>
                          </div>
-                         <div className="content" id="content"></div>
+                         <div className="content" ref={content}></div>
                     </div>
                </div>
           </div>

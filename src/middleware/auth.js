@@ -1,12 +1,13 @@
-import React, { Children, useContext } from "react";
+import React from "react";
+import modules from "../utils/modules";
 
-
-const Auth = () =>{
-     const context = useContext();
+const Modules = modules;
+const Context = React.createContext();
+const Auth = ({children}) =>{
      return (
-          <div value={context}>
-               {Children}
-          </div>
+          <Context.Provider value={Modules}>
+               {children}
+          </Context.Provider>
      )
 }
 

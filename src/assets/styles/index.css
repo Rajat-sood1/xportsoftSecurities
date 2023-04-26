@@ -33,7 +33,7 @@
 
 /*        APP COMPONENT */
 .body {
-     background: #f6f5f7;
+     background: var(--secondary-color);
      display: flex;
      justify-content: center;
      align-items: center;
@@ -64,7 +64,7 @@ a {
 
 .btn {
      border-radius: 20px;
-     border: none;
+     border: 1px solid;
      color: #FFFFFF;
      font-size: 12px;
      font-weight: bold;
@@ -74,6 +74,13 @@ a {
      cursor: pointer;
      background: var(--primary-color);
      padding: 7px 26px;
+}
+
+
+.s-btn,
+.ghost {
+     font-size: .92rem;
+     padding: 10px 32px;
 }
 
 button:active {
@@ -89,7 +96,8 @@ button.ghost {
      border-color: #FFFFFF;
 }
 
-form {
+form #signIn,
+form #signUp {
      background-color: #FFFFFF;
      display: flex;
      align-items: center;
@@ -100,7 +108,7 @@ form {
      text-align: center;
 }
 
-input {
+#signUp input, #signIn input {
      background-color: #eee;
      border: none;
      padding: 12px 15px;
@@ -183,8 +191,8 @@ input {
 
 .overlay {
      background: var(--primary-color);
-     background: -webkit-linear-gradient(to right, rgb(255, 248, 236), var(--primary-color));
-     background: linear-gradient(to right, rgb(255, 248, 236), var(--primary-color));
+     background: -webkit-linear-gradient(to bottom, rgb(255, 248, 236), var(--primary-color));
+     background: linear-gradient(to bottom right, gold, var(--primary-color), goldenrod);
      background-repeat: no-repeat;
      background-size: cover;
      background-position: 0 0;
@@ -282,34 +290,40 @@ footer a {
      border: 1px solid var(--primary-color);
      box-shadow: 3px 8px 24px -8px black;
 }
+
 .card .comp-title {
      border-bottom: 4px solid goldenrod;
      width: 18.76%;
- }
- .card-content h4 {
+}
+
+.card-content h4 {
      margin: 17px 24px 0;
      font-size: 1.250rem;
      color: var(--primary-color);
- }
- .comp-title h2 {
+}
+
+.comp-title h2 {
      line-height: .5;
- }
+}
+
 .card-content .d-flex {
      justify-content: space-between;
      align-items: start;
- }
- .card-footer {
+}
+
+.card-footer {
      text-align: center;
      line-height: 38px;
      margin: 43px 0px 1px;
      background: gold;
      border-radius: 7px;
- }
- .status {
+}
+
+.status {
      font-size: 0.850rem;
      word-spacing: 8px;
      margin: 15px 3px 0px;
- }
+}
 
 /*        PROGRESS COMPONENT      */
 
@@ -347,6 +361,7 @@ footer a {
      background: white;
      padding: 20px;
      margin-bottom: 30px;
+     position: relative;
 }
 
 table {
@@ -391,8 +406,6 @@ tr {
      border-width: 0;
 }
 
-.btn {}
-
 .w-8 {
      width: 8%;
      text-align: center;
@@ -412,6 +425,17 @@ tr {
      text-align: center;
 }
 
+.sts {
+     color: green;
+     font-size: 1.5rem;
+     font-weight: 800;
+}
+
+.sts-r {
+     color: red;
+     font-size: 1.5rem;
+     font-weight: 800;
+}
 
 
 /*             HEADER COMPONENT               */
@@ -451,7 +475,7 @@ tr {
 
 .logo-s {
      margin: 30px;
-     width: 62%;
+     width: 37%;
 }
 
 /*   USER PROFILE     */
@@ -519,7 +543,7 @@ tr {
      height: 60px;
 }
 
-.profile::after {
+.dropdown {
      content: '\25BE';
      margin-left: -5px;
      font-size: 1.50rem;
@@ -604,3 +628,55 @@ iframe {
      transform: translateX(50%);
      z-index: -1;
 }
+
+.q-link {
+     position: fixed;
+     top: 54%;
+     right: 106px;
+     text-align: center;
+}
+
+.q-animate {
+     font-size: 1.250rem;
+     animation: updown 1.2s ease-in-out infinite;
+     margin-bottom: 25px;
+     position: relative;
+}
+
+.q-animate span {
+     font-size: 35px;
+}
+
+@keyframes updown {
+     0% {
+          top: 0;
+     }
+
+     49% {
+          top: 13px;
+     }
+
+     100% {
+          top: 0;
+     }
+}
+
+/*            QUIZ COMPONENT            */
+p.q-no {
+     color: var(--primary-color);
+     font-size: .90rem;
+     font-weight: 800;
+     line-height: 2;
+     margin-top: 15px;
+}
+
+.quiz .comp-title {
+     margin-bottom: -8px;
+}
+.quiz-container {
+     margin-left: 5px;
+ }
+ .quiz-container p {
+     font-size: 1.4rem;
+     font-weight: 500;
+ }

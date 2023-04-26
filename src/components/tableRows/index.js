@@ -20,11 +20,11 @@ const TableRow = ({id, title, duration, progress}) =>{
                     <td className="w-8 border">
                          {progress}
                     </td>
-                    <td className="w-8 border">
-                         Done
+                    <td className="w-8 border sts">
+                    &#10003;
                     </td>
-                    <td className="w-8 border">
-                         Done
+                    <td className="w-8 border sts-r">
+                    &#128473;
                     </td>
                     <td className="w-25 border" >
                     <NavLink to='/Module'> <button className='btn'>Review</button></NavLink>
