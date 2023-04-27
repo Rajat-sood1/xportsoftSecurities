@@ -17,7 +17,7 @@ const SignInUp = () => {
        );
        if (userCredential.current.email && loggedInUser !== undefined) {
          if (loggedInUser.password === userCredential.current.password.value) {
-           setUser(loggedInUser, loggedInUser.password, userCredential.password.value );
+           setUser(loggedInUser);
          } else {
            alert("Password Didn't match");
            userCredential.current.password.value = "";
