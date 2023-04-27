@@ -7,7 +7,7 @@ import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import Module from './pages/Module';
 import Dashboard from './pages/Dashboard';
 import Auth from './middleware/auth';
-import Quiz from './pages/Quiz';
+import Quiz from './pages/Quiz/index2';
 
 function App() {
   return (
