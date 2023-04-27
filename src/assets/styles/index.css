@@ -19,8 +19,7 @@
 :root {
      --primary-color: rgb(180, 135, 0);
      --secondary-color: rgb(255, 248, 236);
-
-
+     --btn-color: #937B50;
 }
 
 
@@ -72,7 +71,7 @@ a {
      text-transform: uppercase;
      transition: transform 80ms ease-in;
      cursor: pointer;
-     background: var(--primary-color);
+     background: var(--btn-color);
      padding: 7px 26px;
 }
 
@@ -96,8 +95,8 @@ button.ghost {
      border-color: #FFFFFF;
 }
 
-form #signIn,
-form #signUp {
+#signUp,
+#signIn {
      background-color: #FFFFFF;
      display: flex;
      align-items: center;
@@ -108,7 +107,7 @@ form #signUp {
      text-align: center;
 }
 
-#signUp input, #signIn input {
+.login{
      background-color: #eee;
      border: none;
      padding: 12px 15px;

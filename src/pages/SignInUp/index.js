@@ -1,16 +1,43 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 // import '../../assets/styles/signInUp.css'
-import { NavLink } from 'react-router-dom'
+import {  Navigate } from 'react-router'
+import Users from '../../utils/users/index'
 
 
 const SignInUp = () => {
 
      const [clasess, setClass] = useState(' ');
+     let users = Users;
+     const [user, setUser] = useState(null);
+     const userCredential = useRef({});
+     console.log(userCredential);
+
+     const signIn = (e) => {
+       e.preventDefault();
+       const loggedInUser = users.find(
+         (user) => user.Email === userCredential.current.email.value
+       );
+       if (userCredential.current.email && loggedInUser !== undefined) {
+         if (loggedInUser.password == userCredential.current.password.value) {
+           setUser(loggedInUser);
+         } else {
+           alert("Please check your credentials again");
+           console.log("password didn't match");
+         }
+       } else {
+         alert("Please check your credentials again");
+         console.log("Unable to find user");
+     }
+     };
+     
+     if (user) {
+       return <Navigate to="/dashboard" replace={true} />;
+     }
+     console.log(userCredential);
 
      return (
           <React.Fragment>
-
-               <div className={'container ' + clasess} id="container">
+               <div className={'container ' + clasess}>
                     <div className="form-container sign-up-container">
 
                          {/*      CREATE NEW USER      */}
@@ -22,9 +49,9 @@ const SignInUp = () => {
                                    <a href="google.com" className="social"><i className="fab fa-linkedin-in"></i></a>
                               </div>
                               <span>or use your email for registration</span>
-                              <input type="text" placeholder="Name" required />
-                              <input type="email" placeholder="Email" required />
-                              <input type="password" placeholder="Password" required />
+                              <input className="login" type="text" placeholder="Name" required />
+                              <input className="login" type="email" placeholder="Email" required />
+                              <input className="login" type="password" placeholder="Password" required />
                               <button type="submit" className="btn s-btn">Sign Up</button>
                          </form>
                     </div>
@@ -40,12 +67,12 @@ const SignInUp = () => {
                                    <a href="google.com" className="social"><i className="fab fa-linkedin-in"></i></a>
                               </div>
                               <span>or use your account</span>
-                              <input type="email" placeholder="Email" required />
-                              <input type="password" placeholder="Password" required />
+                              <input className="login" value={userCredential.current.email} ref={(el) => (userCredential.current.email = el)} type="email" placeholder="Email" required />
+                              <input className="login" ref={(el) => (userCredential.current.password = el) } value={userCredential.current.value} type="password" placeholder="Password" required />
                               <a href="google.com">Forgot your password?</a>
                               
                               
-                              <NavLink to='/dashboard'><button className="btn s-btn" type="submit">Sign In</button></NavLink>
+                              <button className="btn s-btn" onClick={signIn} type="submit">Sign In</button>
                          </form>
                     </div>
 
@@ -57,7 +84,7 @@ const SignInUp = () => {
                               <div className="overlay-panel overlay-left">
                                    <h1>Welcome Back!</h1>
                                    <div className="logo logo-s"></div>
-                                   <button className="btn ghost" id="signIn" onClick={() => setClass(' ')}>Sign In</button>
+                                   <button className="btn ghost" onClick={() => setClass(' ')}>Sign In</button>
                               </div>
 
                               {/* NAVIGATE TO SIGN UP PAGE */}
@@ -65,7 +92,7 @@ const SignInUp = () => {
                                    <h1>Hello, Friend!</h1>
                                    <div className="logo logo-s"></div>
 
-                                   <button className="btn ghost" id="signUp" onClick={() => setClass('right-panel-active')}>Sign Up</button>
+                                   <button className="btn ghost" onClick={() => setClass('right-panel-active')}>Sign Up</button>
                               </div>
                          </div>
                     </div>
