@@ -20,13 +20,13 @@ const SignInUp = () => {
            setUser(loggedInUser, loggedInUser.password, userCredential.password.value );
          } else {
            alert("Password Didn't match");
-           userCredential.current.password.value = " ";
-           userCredential.current.email.value = " ";
+           userCredential.current.password.value = "";
+           userCredential.current.email.value = "";
          }
        } else {
          alert("User Doesn't Exist");
-         userCredential.current.password.value = " ";
-         userCredential.current.email.value = " ";
+         userCredential.current.password.value = "";
+         userCredential.current.email.value = "";
 
      }
      };
