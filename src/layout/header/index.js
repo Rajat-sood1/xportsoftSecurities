@@ -35,11 +35,14 @@ const Header = () => {
                               </div>
                               <div className="user">
                                    <div className="profile d-flex">
-                                        <div className="user-details">
+                                        <div className="user-details d-flex">
+                                             <div>
+
                                              <p>John Doe</p>
                                              <sub>student</sub>
+                                             </div>
+                                             <span>	&#9662;</span>
                                         </div>
-                                        <span className="dropdown">	&#9662;</span>
                                    </div>
                               </div>
                          </div>

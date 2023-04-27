@@ -3,6 +3,14 @@ import { NavLink } from 'react-router-dom';
 
 
 const TableRow = ({id, title, duration, progress}) =>{
+
+     const calculate  = async () =>{
+          let hours= await Math.floor((duration % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          let minutes = 40;
+          let seconds = 23;
+          console.log(hours, minutes, seconds)
+          return [hours + ':' + minutes + ':' + seconds]
+     }
      return (
           <>
               <tr>
@@ -15,7 +23,7 @@ const TableRow = ({id, title, duration, progress}) =>{
                          </h3>
                     </td>
                     <td className="w-8 border">
-                         {duration* 10}
+                         {calculate}
                     </td>
                     <td className="w-8 border">
                          {progress}
@@ -27,7 +35,7 @@ const TableRow = ({id, title, duration, progress}) =>{
                     &#128473;
                     </td>
                     <td className="w-25 border" >
-                    <NavLink to='/Module'> <button className='btn'>Review</button></NavLink>
+                    <NavLink to={'/module/'+id}> <button className='btn'>Review</button></NavLink>
                     </td>
               </tr>
           </>

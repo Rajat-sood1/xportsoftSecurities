@@ -17,7 +17,7 @@ function App() {
         <Route path='/' element={<div className='body'><SignInUp/></div>}/>
           <Route path='/dashboard' fal element={<div className='component'><Dashboard/></div>}/>
           <Route path='/Training' element={<div className='component'><Progress/></div>}/>
-          <Route path='/Module' element={<div className='component'><Module/></div>}/>
+          <Route path='/module/:id' element={<div className='component'><Module/></div>}/>
           <Route path='/quiz' element={<div className='component'><Quiz/></div>}/>
         </Routes>
         

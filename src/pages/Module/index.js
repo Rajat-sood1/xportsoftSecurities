@@ -1,9 +1,13 @@
 import React from "react";
 import Slides from "../../components/slides";
 import Header from "../../layout/header";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
+import Modules from "../../data/Modules";
 
 const Module = () => {
+     const modules = Modules;
+     const{ id }= useParams();
+     console.log(id)
      return (
           <>
                <Header position={'position'} />
@@ -15,7 +19,7 @@ const Module = () => {
                          <div className="comp-title">
                               <h3>Welcome To The Security Guard Course</h3>
                          </div>
-                         <Slides />
+                         <Slides src={modules[id-1].url}/>
                          <div className="q-link">
                               <div className="q-animate">
                                    <p>Click here to submit <b>Quiz</b></p>

@@ -1,12 +1,10 @@
 import React from "react";
-import modules from "../../utils/modules";
 
-const Slides = () =>{
-     let module = modules;
+const Slides = ({src}) =>{
      return (
 
           <>
-               <iframe title="Module Slides" src={module[0].url} width="720px" height="480px" frameBorder="0">This is an embedded </iframe>
+               <iframe title="Module Slides" src={src} width="720px" height="480px" frameBorder="0">This is an embedded  <a target="_blank" href="https://office.com" rel="noreferrer">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps" rel="noreferrer">Office</a></iframe>
           </>
      )
 }

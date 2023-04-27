@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 // import '../../assets/styles/signInUp.css'
 import {  Navigate } from 'react-router'
-import Users from '../../utils/users/index'
+import Users from '../../data/Users'
 
 
 const SignInUp = () => {
@@ -18,15 +18,21 @@ const SignInUp = () => {
          (user) => user.Email === userCredential.current.email.value
        );
        if (userCredential.current.email && loggedInUser !== undefined) {
-         if (loggedInUser.password == userCredential.current.password.value) {
+         if (loggedInUser.password === userCredential.current.password.value) {
            setUser(loggedInUser);
          } else {
            alert("Please check your credentials again");
            console.log("password didn't match");
+           userCredential.current.password.value = "";
+           userCredential.current.email.value = "";
          }
+         console.log(loggedInUser.password, userCredential.current.password.value)
        } else {
          alert("Please check your credentials again");
          console.log("Unable to find user");
+         userCredential.current.password.value = "";
+         userCredential.current.email.value = "";
+
      }
      };
      

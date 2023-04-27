@@ -1,132 +1,110 @@
-import React, {  useState } from 'react'
-import Header from '../../layout/header'
-
-
-
-
+import { useState } from 'react';
+import Header from '../../layout/header';
+import Questions from '../../data/Questions';
 
 const Quiz = () => {
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [answers, setAnswers] = useState({});
+    const [showResults, setShowResults] = useState(false);
 
-     const [answers, setAnswers] = useState({});
+    const handleAnswerSelect = (answer) => {
+        setAnswers({
+            ...answers,
+            [Questions[currentQuestionIndex].id]: answer,
+        });
+    };
 
-     const handleAnswerChange = (event) => {
-          const { name, value } = event.target;
-          setAnswers((prevAnswers) => ({
-               ...prevAnswers,
-               [name]: value,
-          }));
-     };
-    
-     return (
-          <>
-               <Header />
-               <div className="comp-container">
+    const handleNextClick = () => {
+        if (currentQuestionIndex < Questions.length - 1) {
+            setCurrentQuestionIndex(currentQuestionIndex + 1);
+        } else {
+            setShowResults(true);
+        }
+    };
+
+    const handleRestartClick = () => {
+        setCurrentQuestionIndex(0);
+        setAnswers({});
+        setShowResults(false);
+    };
+
+    const getScore = () => {
+        let score = 0;
+        for (const [QuestionId, selectedAnswer] of Object.entries(answers)) {
+            const Question = Questions.find((q) => q.id.toString() === QuestionId);
+            if (Question.answer === selectedAnswer) {
+                score++;
+            }
+        }
+        return score;
+    };
+
+    const renderQuiz = () => {
+        const Question = Questions[currentQuestionIndex];
+        return (
+            <div>
+                <div className=''>
+                    <h2>Question {Question.id}</h2>
+                    <p>{Question.text}</p>
+                    <ul>
+                        {Question.options.map((option, index) => (
+                            <li key={index}>
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name={`Question-${Question.id}`}
+                                        value={option}
+                                        checked={answers[Question.id] === option}
+                                        onChange={() => handleAnswerSelect(option)}
+                                    />
+                                    {option}
+                                </label>
+                            </li>
+                        ))}
+                    </ul>
+                    <button onClick={handleNextClick}>Next</button>
+                </div>
+            </div>
+        );
+    };
+
+    const renderResults = () => {
+        const score = getScore();
+        return (
+            <div>
+                <h2>Results</h2>
+                <p>You scored {score} out of {Questions.length}.</p>
+                <ul>
+                    {Questions.map((Question) => (
+                        <li key={Question.id}>
+                            {Question.text} - Correct answer: {Question.answer}, Your answer: {answers[Question.id]}
+                        </li>
+                    ))}
+                </ul>
+                <button onClick={handleRestartClick}>Restart</button>
+            </div>
+        );
+    };
+
+    return (
+        <div>
+            <Header />
+            <div className="comp-container">
+                <div className="comp-title">
+                    <h1>Quiz</h1>
+                </div>
+                <section className="module-sec quiz">
                     <div className="comp-title">
-                         <h1>Quiz</h1>
+                        <p className='q-no'>Q{currentQuestionIndex+1} of :{Questions.length}</p>
                     </div>
-                    <section className="module-sec quiz">
-                         <div className="comp-title">
-                              <p className='q-no'>Q{2} of 3:</p>
-                         </div>
-                         <div className='quiz-container'>
+                    <div className='quiz-container'>
 
+                        {showResults ? renderResults() : renderQuiz()}
 
-                              <form>
-                                   <h2>Question 1:</h2>
-                                   <label>
-                                        <input
-                                             type="radio"
-                                             name="q1"
-                                             value="option1"
-                                             checked={answers.q1 === 'option1'}
-                                             onChange={handleAnswerChange}
-                                        />
-                                        Option 1
-                                   </label>
-                                   <label>
-                                        <input
-                                             type="radio"
-                                             name="q1"
-                                             value="option2"
-                                             checked={answers.q1 === 'option2'}
-                                             onChange={handleAnswerChange}
-                                        />
-                                        Option 2
-                                   </label>
-                                   <label>
-                                        <input
-                                             type="radio"
-                                             name="q1"
-                                             value="option3"
-                                             checked={answers.q1 === 'option3'}
-                                             onChange={handleAnswerChange}
-                                        />
-                                        Option 3
-                                   </label>
-                                   <label>
-                                        <input
-                                             type="radio"
-                                             name="q1"
-                                             value="option4"
-                                             checked={answers.q1 === 'option4'}
-                                             onChange={handleAnswerChange}
-                                        />
-                                        Option 4
-                                   </label>
-
-                                   <h2>Question 2:</h2>
-                                   <label>
-                                        <input
-                                             type="radio"
-                                             name="q2"
-                                             value="option1"
-                                             checked={answers.q2 === 'option1'}
-                                             onChange={handleAnswerChange}
-                                        />
-                                        Option 1
-                                   </label>
-                                   <label>
-                                        <input
-                                             type="radio"
-                                             name="q2"
-                                             value="option2"
-                                             checked={answers.q2 === 'option2'}
-                                             onChange={handleAnswerChange}
-                                        />
-                                        Option 2
-                                   </label>
-                                   <label>
-                                        <input
-                                             type="radio"
-                                             name="q2"
-                                             value="option3"
-                                             checked={answers.q2 === 'option3'}
-                                             onChange={handleAnswerChange}
-                                        />
-                                        Option 3
-                                   </label>
-                                   <label>
-                                        <input
-                                             type="radio"
-                                             name="q2"
-                                             value="option4"
-                                             checked={answers.q2 === 'option4'}
-                                             onChange={handleAnswerChange}
-                                        />
-                                        Option 4
-                                   </label>
-                                   <input type='submit' className='btn' />
-                              </form>
-                         </div>
-                    </section>
-               </div>
-          </>
-     )
-}
-
-export default Quiz
-
-
-
-
-
+                    </div>
+                </section>
+            </div>
+        </div>
+    );
+};
+export default Quiz;
