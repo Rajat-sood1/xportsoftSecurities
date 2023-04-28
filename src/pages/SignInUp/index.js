@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-// import '../../assets/styles/signInUp.css'
 import {  Navigate } from 'react-router'
 import Users from '../../data/Users'
 
@@ -10,7 +9,6 @@ const SignInUp = () => {
      let users = Users;
      const [user, setUser] = useState(null);
      const userCredential = useRef({});
-     console.log(userCredential);
 
      const signIn = (e) => {
        e.preventDefault();
@@ -21,15 +19,13 @@ const SignInUp = () => {
          if (loggedInUser.password === userCredential.current.password.value) {
            setUser(loggedInUser);
          } else {
-           alert("Please check your credentials again");
-           console.log("password didn't match");
+           alert("Password Didn't match");
            userCredential.current.password.value = "";
            userCredential.current.email.value = "";
          }
          console.log(loggedInUser.password, userCredential.current.password.value)
        } else {
-         alert("Please check your credentials again");
-         console.log("Unable to find user");
+         alert("User Doesn't Exist");
          userCredential.current.password.value = "";
          userCredential.current.email.value = "";
 
@@ -39,7 +35,6 @@ const SignInUp = () => {
      if (user) {
        return <Navigate to="/dashboard" replace={true} />;
      }
-     console.log(userCredential);
 
      return (
           <React.Fragment>
