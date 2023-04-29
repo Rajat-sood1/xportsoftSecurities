@@ -1,27 +1,21 @@
-import React from 'react';
-import SignInUp from './pages/SignInUp/index';
-import Progress from './pages/progress/index'
-
+import { Suspense } from "react";
+import Routes from './routes';
 import './assets/styles/index.css'
-import { Route, BrowserRouter, Routes } from 'react-router-dom';
-import Module from './pages/Module';
-import Dashboard from './pages/Dashboard';
-import Auth from './middleware/auth';
-import Quiz from './pages/Quiz';
+import { useMatch } from "react-router-dom";
+import Auth from "./middleware/auth";
+
 
 function App() {
+  const routes = Routes();
+  console.log(routes)
+  const match = useMatch({path:'/'});
+  console.log(match);
   return (
     <Auth>
-      <BrowserRouter>
-        <Routes>
-        <Route path='/' element={<div className='body'><SignInUp/></div>}/>
-          <Route path='/dashboard' fal element={<div className='component'><Dashboard/></div>}/>
-          <Route path='/Training' element={<div className='component'><Progress/></div>}/>
-          <Route path='/module/:id' element={<div className='component'><Module/></div>}/>
-          <Route path='/quiz' element={<div className='component'><Quiz/></div>}/>
-        </Routes>
-        
-      </BrowserRouter>
+
+    <Suspense fallback={<div className='body'>Please wait while Page is loading...</div>}>
+      {match?.pathname === '/'? <div className="body">{routes}</div>:<div className="component">{routes}</div>}
+    </Suspense>
     </Auth>
   );
 }

@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import TableRow from "../../components/tableRows";
 import modules from '../../utils/modules/index';
 import Header from "../../layout/header";
+import { Context } from "../../middleware/auth";
 
 
 const Progress = () => {
-
-     const moduleList = modules;
+     const formatDuration = (duration) => {
+          const hours = Math.floor(duration / 3600);
+          const minutes = Math.floor((duration % 3600) / 60);
+          const seconds = duration % 60;
+          return( `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`)
+        };
+        
+        const Modules = useContext(Context);
+        console.log(Modules);
 
      return (
           <>
@@ -36,9 +44,9 @@ const Progress = () => {
 
                               <tbody>
                                    {
-                                        moduleList.map(({ id, duration, title, progress }) => {
+                                        Modules.map(({ id, duration, title, progress }) => {
                                              return (
-                                                  <TableRow key={id} id={id} duration={duration} title={title} progress={progress} />
+                                                  <TableRow key={id} id={id} duration={formatDuration(duration)} title={title} progress={progress} />
 
                                              )
                                         })

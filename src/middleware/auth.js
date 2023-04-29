@@ -2,7 +2,7 @@ import React from "react";
 import modules from "../utils/modules";
 
 const Modules = modules;
-const Context = React.createContext();
+export const Context = React.createContext(null);
 const Auth = ({children}) =>{
      return (
           <Context.Provider value={Modules}>

@@ -5,7 +5,7 @@ let modules = [
           url: 'https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Ftraining%2Egoodlucksecurity%2Eca%3A443%2Fdata%2Fresources%2Flessons%2Fchapter%2Done%2Eppt&amp;wdAr=1.3333333333333333&amp;Embed=1',
           isCompleted: false,
           Marks:0,
-          duration:60000,
+          duration:1283,
           progress: "00:00:00"
 
      },
@@ -16,7 +16,7 @@ let modules = [
           url: 'https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Ftraining%2Egoodlucksecurity%2Eca%3A443%2Fdata%2Fresources%2Flessons%2Fchapter%2Done%2Eppt&amp;wdAr=1.3333333333333333&amp;Embed=1',
           isCompleted: false,
           Marks:0,
-          duration:60000,
+          duration:3474,
           progress: "00:00:00"
           
      },
@@ -27,7 +27,7 @@ let modules = [
           url: 'https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Ftraining%2Egoodlucksecurity%2Eca%3A443%2Fdata%2Fresources%2Flessons%2Fchapter%2Done%2Eppt&amp;wdAr=1.3333333333333333&amp;Embed=1',
           isCompleted: false,
           Marks:0,
-          duration:60000,
+          duration:1838,
           progress: "00:00:00"
           
      },
@@ -38,7 +38,7 @@ let modules = [
           url: 'https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Ftraining%2Egoodlucksecurity%2Eca%3A443%2Fdata%2Fresources%2Flessons%2Fchapter%2Done%2Eppt&amp;wdAr=1.3333333333333333&amp;Embed=1',
           isCompleted: false,
           Marks:0,
-          duration:60000,
+          duration:1837,
           progress: "00:00:00"
           
      },
@@ -49,7 +49,7 @@ let modules = [
           url: 'https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Ftraining%2Egoodlucksecurity%2Eca%3A443%2Fdata%2Fresources%2Flessons%2Fchapter%2Done%2Eppt&amp;wdAr=1.3333333333333333&amp;Embed=1',
           isCompleted: false,
           Marks:0,
-          duration:60000,
+          duration:1749,
           progress: "00:00:00"
           
      },
@@ -60,7 +60,7 @@ let modules = [
           url: 'https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Ftraining%2Egoodlucksecurity%2Eca%3A443%2Fdata%2Fresources%2Flessons%2Fchapter%2Done%2Eppt&amp;wdAr=1.3333333333333333&amp;Embed=1',
           isCompleted: false,
           Marks:0,
-          duration:60000,
+          duration:1847,
           progress: "00:00:00"
           
      },
@@ -71,7 +71,7 @@ let modules = [
           url: 'https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Ftraining%2Egoodlucksecurity%2Eca%3A443%2Fdata%2Fresources%2Flessons%2Fchapter%2Done%2Eppt&amp;wdAr=1.3333333333333333&amp;Embed=1',
           isCompleted: false,
           Marks:0,
-          duration:60000,
+          duration:2839,
           progress: "00:00:00"
           
      },
@@ -82,7 +82,7 @@ let modules = [
           url: 'https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Ftraining%2Egoodlucksecurity%2Eca%3A443%2Fdata%2Fresources%2Flessons%2Fchapter%2Done%2Eppt&amp;wdAr=1.3333333333333333&amp;Embed=1',
           isCompleted: false,
           Marks:0,
-          duration:60000,
+          duration:1937,
           progress: "00:00:00"
           
      },
@@ -93,7 +93,7 @@ let modules = [
           url: 'https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Ftraining%2Egoodlucksecurity%2Eca%3A443%2Fdata%2Fresources%2Flessons%2Fchapter%2Done%2Eppt&amp;wdAr=1.3333333333333333&amp;Embed=1',
           isCompleted: false,
           Marks:0,
-          duration:60000,
+          duration:1983,
           progress: "00:00:00"
           
      },
@@ -104,7 +104,7 @@ let modules = [
           url: 'https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Ftraining%2Egoodlucksecurity%2Eca%3A443%2Fdata%2Fresources%2Flessons%2Fchapter%2Done%2Eppt&amp;wdAr=1.3333333333333333&amp;Embed=1',
           isCompleted: false,
           Marks:0,
-          duration:60000,
+          duration:1938,
           progress: "00:00:00"
           
      },
@@ -115,7 +115,7 @@ let modules = [
           url: 'https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Ftraining%2Egoodlucksecurity%2Eca%3A443%2Fdata%2Fresources%2Flessons%2Fchapter%2Done%2Eppt&amp;wdAr=1.3333333333333333&amp;Embed=1',
           isCompleted: false,
           Marks:0,
-          duration:60000,
+          duration:1634,
           progress: "00:00:00"
           
      }

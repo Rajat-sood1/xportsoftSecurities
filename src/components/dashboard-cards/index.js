@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const Cards = ({duration, progress, status})=>{
      return (
-          <NavLink to='/training'>
+          <NavLink to='/module/progress'>
 
                <div className="card">
                     <div className="comp-title">
