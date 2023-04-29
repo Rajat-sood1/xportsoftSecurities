@@ -6,8 +6,9 @@ import Modules from "../../data/Modules";
 
 const Module = () => {
      const modules = Modules;
-     const{ module }= useParams();
+     const { module, id } = useParams();
      console.log(module)
+     document.title = module;
      return (
           <>
                <Header position={'position'} />
@@ -19,13 +20,13 @@ const Module = () => {
                          <div className="comp-title">
                               <h3>Welcome To The Security Guard Course</h3>
                          </div>
-                         <Slides src={modules[module-1].url}/>
+                         <Slides src={modules[id-1].url}/>
                          <div className="q-link">
                               <div className="q-animate">
                                    <p>Click here to submit <b>Quiz</b></p>
                                    <span>&#11167;</span>
                               </div>
-                              <NavLink to="/training/module/:module/quiz"><button className="btn">Take Quiz</button></NavLink>
+                              <NavLink to="/quiz"><button className="btn">Take Quiz</button></NavLink>
                          </div>
                     </div>
                </div>

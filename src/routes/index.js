@@ -26,7 +26,7 @@ const Routes = () =>{
          element: (<div className='component'><Module /></div>),
     },
     {
-      path: '/:module/quiz',
+      path: '/quiz',
       element: (<div className='component'><Quiz /></div>),
     },
 ]);

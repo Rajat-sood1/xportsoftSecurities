@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 
 const TableRow = ({id, title, duration, progress}) =>{
+     let module = title;
 
      return (
           <>
@@ -28,7 +29,7 @@ const TableRow = ({id, title, duration, progress}) =>{
                     &#128473;
                     </td>
                     <td className="w-25 border" >
-                    <NavLink to={'/training/module/'+id}> <button className='btn'>Review</button></NavLink>
+                    <NavLink to={`/${module}/${id}`}> <button className='btn'>Review</button></NavLink>
                     </td>
               </tr>
           </>
