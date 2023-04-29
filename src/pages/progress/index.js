@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import TableRow from "../../components/tableRows";
-import modules from '../../utils/modules/index';
 import Header from "../../layout/header";
 import { Context } from "../../middleware/auth";
 
