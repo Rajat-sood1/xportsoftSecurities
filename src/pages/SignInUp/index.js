@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import {  Navigate } from 'react-router'
-import Users from '../../utils/users/index'
+import Users from '../../data/Users'
 
 
 const SignInUp = () => {
@@ -21,8 +21,8 @@ const SignInUp = () => {
          } else {
            alert("Password Didn't match");
            userCredential.current.password.value = "";
-           userCredential.current.email.value = "";
          }
+         console.log(loggedInUser.password, userCredential.current.password.value)
        } else {
          alert("User Doesn't Exist");
          userCredential.current.password.value = "";
@@ -67,7 +67,7 @@ const SignInUp = () => {
                                    <a href="google.com" className="social"><i className="fab fa-linkedin-in"></i></a>
                               </div>
                               <span>or use your account</span>
-                              <input className="login" value={userCredential.current.email} ref={(el) => (userCredential.current.email = el)} type="email" placeholder="Email" required />
+                              <input className="login" ref={(el) => (userCredential.current.email = el)} value={userCredential.current.value}  type="email" placeholder="Email" required />
                               <input className="login" ref={(el) => (userCredential.current.password = el) } value={userCredential.current.value} type="password" placeholder="Password" required />
                               <a href="google.com">Forgot your password?</a>
                               

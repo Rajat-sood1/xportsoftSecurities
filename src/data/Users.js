@@ -2,7 +2,7 @@ let Users = [
      {
           Name: 'John Doe',
           Email: 'john@test.com',
-          password:'john@1234',
+          password:'123456',
           login: false
      }
 ]

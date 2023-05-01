@@ -3,6 +3,14 @@ import { NavLink } from 'react-router-dom';
 
 
 const TableRow = ({id, title, duration, progress}) =>{
+     let module = title;      
+     const formatDuration =  (duration) => {
+          const hours = Math.floor(duration / 3600);
+          const minutes = Math.floor((duration % 3600) / 60);
+          const seconds = duration % 60;
+          return ( `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`)
+        };
+
      return (
           <>
               <tr>
@@ -15,7 +23,7 @@ const TableRow = ({id, title, duration, progress}) =>{
                          </h3>
                     </td>
                     <td className="w-8 border">
-                         {duration* 10}
+                         {formatDuration(duration)}
                     </td>
                     <td className="w-8 border">
                          {progress}
@@ -27,7 +35,7 @@ const TableRow = ({id, title, duration, progress}) =>{
                     &#128473;
                     </td>
                     <td className="w-25 border" >
-                    <NavLink to='/Module'> <button className='btn'>Review</button></NavLink>
+                    <NavLink to={`/${module}/${id}`}> <button className='btn'>Review</button></NavLink>
                     </td>
               </tr>
           </>

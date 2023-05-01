@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 // import Users from "../../utils/users/index"
 import { NavLink } from "react-router-dom";
 
@@ -6,17 +6,21 @@ const Header = () => {
 
      const navbar = useRef();
      const content = useRef();
-     window.onscroll = () => {
-          let sticky = content.current.offsetTop;
-          if (content) {
 
-               if (window.pageYOffset >= sticky) {
-                    navbar.current.classList.add("sticky")
-               } else {
-                    navbar.current.classList.remove("sticky");
+
+     useEffect(()=>{
+          window.onscroll = () => {
+               let sticky = content.current.offsetTop;
+               if (content) {
+     
+                    if (window.pageYOffset >= sticky) {
+                         navbar.current.classList.add("sticky")
+                    } else {
+                         navbar.current.classList.remove("sticky");
+                    }
                }
           }
-     }
+     }, [])
      return (
           //   HEADER SECTION
           <div className="header">
@@ -35,11 +39,14 @@ const Header = () => {
                               </div>
                               <div className="user">
                                    <div className="profile d-flex">
-                                        <div className="user-details">
+                                        <div className="user-details d-flex">
+                                             <div>
+
                                              <p>John Doe</p>
                                              <sub>student</sub>
+                                             </div>
+                                             <span>	&#9662;</span>
                                         </div>
-                                        <span className="dropdown">	&#9662;</span>
                                    </div>
                               </div>
                          </div>
