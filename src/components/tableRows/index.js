@@ -1,8 +1,12 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { Context } from '../../middleware/auth';
 
 
 const TableRow = ({id, title, duration, progress}) =>{
+     const {loggedInUser, openModule} = useContext(Context);
+
+
      let module = title;
      let hours = Math.floor(duration/3600);
      let minutes = Math.floor((duration %3600)/60);
@@ -24,14 +28,14 @@ const TableRow = ({id, title, duration, progress}) =>{
                     <td className="w-8 border">
                          {progress}
                     </td>
-                    <td className="w-8 border sts">
-                    &#10003;
-                    </td>
-                    <td className="w-8 border sts-r">
-                    &#128473;
-                    </td>
+                   {loggedInUser.isCompleted? <td className="w-8 border sts"> &#10003;</td>: <td className="w-8 border sts-r"> &#128473;</td>}
+                    
+                    
+                    
+                    {loggedInUser.isCompleted?<td className="w-8 border sts"> &#10003;</td>:<td className="w-8 border sts-r"> &#128473;</td>}
+                    
                     <td className="w-25 border" >
-                    <NavLink to={`/${module}/${id}`}> <button className='btn'>Review</button></NavLink>
+                    <button className={loggedInUser.isCompleted?'btn':'btn restricted'} onClick={openModule(id)}>Review</button>
                     </td>
               </tr>
           </>

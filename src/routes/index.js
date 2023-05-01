@@ -26,7 +26,7 @@ const Routes = () =>{
          element:<Module />,
          children:[
           {
-            path:'/:module/:id/quiz',
+            path:'quiz',
             element: <Quiz />
           }
          ]

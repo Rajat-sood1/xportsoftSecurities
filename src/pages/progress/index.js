@@ -2,10 +2,15 @@ import React, { useContext } from "react";
 import TableRow from "../../components/tableRows";
 import Header from "../../layout/header";
 import { Context } from "../../middleware/auth";
+import { Navigate } from "react-router-dom";
 
 
 const Progress = () => {
-     const {modules} = useContext(Context);
+     const { modules, loggedInUser } = useContext(Context);
+
+     if(!loggedInUser.login){
+          return <Navigate to='/' replace={true}/>;
+     }
      return (
           <>
                <Header/>

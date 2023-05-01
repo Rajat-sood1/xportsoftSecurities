@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import Slides from "../../components/slides";
 import Header from "../../layout/header";
-import { NavLink, Outlet, useMatch, useParams } from "react-router-dom";
-import Modules from "../../data/Modules";
+import { NavLink, Navigate, Outlet, useMatch, useParams } from "react-router-dom";
+import { Context } from "../../middleware/auth";
 
-const Module = () => {
-     const modules = Modules;
-     const { module, id } = useParams();
-     const match = useMatch({ path: '/module/1/quiz' });
-     document.title = module;
+
+const Module = () => {    
+
+     //   DESTRUCTURING OF GLOBAL STATES USING USECONTEXT
+      const { modules, loggedInUser } = useContext(Context);
+
+     // REQUESTED PARAMS FOR DYNAMIC ROUTING
+     const { id } = useParams();
+     const match = useMatch({ path: '/:module/:id/quiz' });
+     
+     // NAVIGATE IS USER IS LOGGED OUT
+     if(!loggedInUser.login){
+          return <Navigate to='/' replace={true}/>;
+     }
      return (
           <>
                {match ?
@@ -30,7 +39,7 @@ const Module = () => {
                                              <p>Click here to submit <b>Quiz</b></p>
                                              <span>&#11167;</span>
                                         </div>
-                                        <NavLink to="/module/1/quiz"><button className="btn">Take Quiz</button></NavLink>
+                                        <NavLink to='quiz'><button className="btn">Take Quiz</button></NavLink>
                                    </div>
                               </div>
                          </div>

@@ -1,7 +1,8 @@
 import React from "react";
 import Modules from "../data/Modules";
 import { useState } from "react";
-
+import Users from "../data/Users";
+import { Navigate } from "react-router-dom";
 const modules = Modules;
 
 export const Context = React.createContext(null);
@@ -9,36 +10,37 @@ export const Context = React.createContext(null);
 
 const Auth = ({ children }) => {
 
-     const [user, setUser] = useState({
-          Name: null,
-          email: null,
-          password: null,
-          login: false,
-          sub: []
-     });
-
      const [ x, setX ] = useState(null);
-     
-     const openModule = (i) => {
-          let module = user.sub.find(elem => elem.isActive);
-          if (!user.sub[i].isActive) {
-               if (i === 0 || Boolean(user.sub[i - 1].isCompleted)) {
-                    (module.isActive && (module.isActive = false));
-                    user.sub[i].isActive = true;
-                    setX({x:clearInterval(x)});
-                    document.title = user.title[i].title;
+     const [userList,setUserList]=useState(Users);
+     let [ loggedInUser,setLoggedInUser ]=useState({
+          Name: null,
+          Email: null,
+          password:null,
+          login: false,
+          sub:[]
+     }) 
 
+
+     const openModule = (i) => {
+          let module = loggedInUser.sub.find(elem => elem.isActive);
+          if (!loggedInUser.sub[i].isActive) {
+               if (i === 0 || Boolean(loggedInUser.sub[i - 1].isCompleted)) {
+                    (module.isActive && (module.isActive = false));
+                    loggedInUser.sub[i].isActive = true;
+                    setX({x:clearInterval(x)});
+                    document.title = loggedInUser.title[i].title;
                     setX({x: setInterval(async () => {
                          console.log("timer on")
-                         user.sub[i].duration--;
+                         loggedInUser.sub[i].duration--;
 
-                         if (user.sub[i].duration <= 0) {
+                         if (loggedInUser.sub[i].duration <= 0) {
                               clearInterval(x)
-                              user.sub[i].isCompleted = true;
+                              loggedInUser.sub[i].isCompleted = true;
                               console.log("timer Expired");
                          }
 
                     }, 1000)})
+                    return (<Navigate to={`/${loggedInUser.sub[i].title}/${i}`}/>)
                } else {
                     console.log('Complete previous Module first')
                }
@@ -50,7 +52,7 @@ const Auth = ({ children }) => {
 
 
      return (
-          <Context.Provider value={{ user, setUser, modules, openModule }}>
+          <Context.Provider value={{ loggedInUser,setLoggedInUser, modules,userList, setUserList, openModule }}>
                {children}
           </Context.Provider>
      )
