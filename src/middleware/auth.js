@@ -25,7 +25,7 @@ const Auth = ({ children }) => {
           let module = loggedInUser.sub.find(elem => elem.isActive);
           if (!loggedInUser.sub[i].isActive) {
                if (i === 0 || Boolean(loggedInUser.sub[i - 1].isCompleted)) {
-                    (module.isActive && (module.isActive = false));
+                    (module?.isActive && (module.isActive = false));
                     loggedInUser.sub[i].isActive = true;
                     setX({x:clearInterval(x)});
                     document.title = loggedInUser.title[i].title;
