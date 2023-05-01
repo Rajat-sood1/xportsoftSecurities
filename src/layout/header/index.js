@@ -10,13 +10,13 @@ const Header = () => {
 
      useEffect(()=>{
           window.onscroll = () => {
-               let sticky = content.current.offsetTop;
-               if (content) {
+               let sticky = content?.current?.offsetTop;
+               if (content && true) {
      
                     if (window.pageYOffset >= sticky) {
-                         navbar.current.classList.add("sticky")
+                         navbar?.current.classList.add("sticky")
                     } else {
-                         navbar.current.classList.remove("sticky");
+                         navbar?.current?.classList?.remove("sticky");
                     }
                }
           }
@@ -55,7 +55,7 @@ const Header = () => {
                          <div className="navbar" ref={navbar}>
                               <ul className="nav-links">
                                    <NavLink to='/dashboard'><li>Dashboard</li></NavLink>
-                                   <NavLink to='/training'><li>Training</li></NavLink>
+                                   <NavLink to='/module/progress'><li>Training</li></NavLink>
                                    <li>Settings</li>
                               </ul>
                          </div>

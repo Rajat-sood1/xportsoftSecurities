@@ -5,11 +5,7 @@ import { Context } from "../../middleware/auth";
 
 
 const Progress = () => {
-     const Modules = useContext(Context);
-     console.log(Modules);
-
-        
-
+     const {modules} = useContext(Context);
      return (
           <>
                <Header/>
@@ -38,7 +34,7 @@ const Progress = () => {
 
                               <tbody>
                                    {
-                                        Modules.map(({ id, duration, title, progress }) => {
+                                        modules.map(({ id, duration, title, progress }) => {
                                              return (
                                                   <TableRow key={id} id={id} duration={duration} title={title} progress={progress} />
 

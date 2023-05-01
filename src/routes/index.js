@@ -19,15 +19,17 @@ const Routes = () =>{
     },
     {
       path: '/module/progress',
-      element: <Progress />,
+      element: <Progress />
     },
     {
          path: '/:module/:id',
          element:<Module />,
-    },
-    {
-      path: '/quiz',
-      element: <Quiz />,
+         children:[
+          {
+            path:'/:module/:id/quiz',
+            element: <Quiz />
+          }
+         ]
     },
 ]);
 return routes

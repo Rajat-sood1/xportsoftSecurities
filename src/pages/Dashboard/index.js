@@ -1,11 +1,11 @@
 import React from "react";
 import Cards from "../../components/dashboard-cards";
-import modules from "../../utils/modules";
+import Modules from "../../data/Modules";
 import Header from "../../layout/header";
 
 
 const Dashboard = () =>{
-     let moduleList = modules;
+     let moduleList = Modules;
      return(
           <>
           <Header/>          
