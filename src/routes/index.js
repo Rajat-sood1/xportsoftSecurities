@@ -18,7 +18,7 @@ const Routes = () =>{
       element: <Dashboard />,
     },
     {
-      path: '/module/progress',
+      path: '/progress',
       element: <Progress />
     },
     {
