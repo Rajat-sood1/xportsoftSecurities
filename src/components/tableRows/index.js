@@ -36,8 +36,7 @@ const TableRow = ({ id, title, duration, progress }) => {
                     {loggedInUser.isCompleted ? <td className="w-8 border sts"> &#10003;</td> : <td className="w-8 border sts-r"> &#128473;</td>}
 
                     <td className="w-25 border" >
-                         <NavLink to={`/${module}/${id}`}> <button className={loggedInUser ? 'btn' : 'btn restricted'}>Review</button></NavLink>
-                         <NavLink to={`/${module}/${id}`}> <button className={loggedInUser ? 'btn' : 'btn restricted'}>Review</button></NavLink>
+                         <NavLink to={`/${module}/${id}`}> <button className={loggedInUser.sub[id-1].isCompleted ? 'btn' : 'btn restricted'}>Review</button></NavLink>
                     </td>
                </tr>
           </>
