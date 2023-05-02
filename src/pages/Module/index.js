@@ -33,7 +33,7 @@ const Module = () => {
                                    <div className="comp-title">
                                         <h3>Welcome To The Security Guard Course</h3>
                                    </div>
-                                   <Slides src={modules[id - 1].url} />
+                                   <Slides src={modules[id].url} />
                                    <div className="q-link">
                                         <div className="q-animate">
                                              <p>Click here to submit <b>Quiz</b></p>

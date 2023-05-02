@@ -5,10 +5,9 @@ import { Context } from '../../middleware/auth';
 
 
 const TableRow = ({ id, title, duration, progress }) => {
+
      const { loggedInUser } = useContext(Context);
 
-
-     let module = title;
      let hours = Math.floor(duration / 3600);
      let minutes = Math.floor((duration % 3600) / 60);
      let seconds = Math.floor(duration % 60);
@@ -29,14 +28,17 @@ const TableRow = ({ id, title, duration, progress }) => {
                     <td className="w-8 border">
                          {progress}
                     </td>
-                    {loggedInUser.isCompleted ? <td className="w-8 border sts"> &#10003;</td> : <td className="w-8 border sts-r"> &#128473;</td>}
+                    <td className="w-8 border">
+                    {loggedInUser.sub[id-1].isCompleted ?  <span className='sts'>&#10003;</span> : <span className='sts-r'>&#128473;</span>}
+                    </td>
 
 
-
-                    {loggedInUser.isCompleted ? <td className="w-8 border sts"> &#10003;</td> : <td className="w-8 border sts-r"> &#128473;</td>}
+                    <td className="w-8 border sts">
+                    {loggedInUser.sub[id-1].isCompleted  ?  <span className='sts'>&#10003;</span> : <span className='sts-r'> &#128473;</span>}
+                    </td>
 
                     <td className="w-25 border" >
-                         <NavLink to={`/${module}/${id}`}> <button className={loggedInUser.sub[id-1].isCompleted ? 'btn' : 'btn restricted'}>Review</button></NavLink>
+                         <NavLink to={`/module/${id}`}> <button className={loggedInUser.sub[id-1].isCompleted ? 'btn' : 'btn restricted'}>Review</button></NavLink>
                     </td>
                </tr>
           </>

@@ -74,7 +74,7 @@ const Header = () => {
                          <div className="navbar" ref={navbar}>
                               <ul className="nav-links">
                                    <NavLink to='/dashboard'><li>Dashboard</li></NavLink>
-                                   <NavLink to='/progress'><li>Training</li></NavLink>
+                                   <NavLink to='/modules'><li>Training</li></NavLink>
                                    <li>Settings</li>
                               </ul>
                          </div>
