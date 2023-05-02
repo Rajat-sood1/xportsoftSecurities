@@ -427,13 +427,13 @@ tr {
 
 .sts {
      color: green;
-     font-size: 1.5rem;
+     font-size: 1.2rem;
      font-weight: 800;
 }
 
 .sts-r {
      color: red;
-     font-size: 1.5rem;
+     font-size: 1.2rem;
      font-weight: 800;
 }
 .restricted::after {

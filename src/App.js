@@ -1,11 +1,6 @@
 import { Suspense } from "react";
-import Routes from './routes';
+import{ Routes }from './routes';
 import './assets/styles/index.css'
-import { Route, BrowserRouter, Routes } from 'react-router-dom';
-import Module from './pages/Module';
-import Dashboard from './pages/Dashboard';
-import Auth from './middleware/auth';
-import Quiz from './pages/Quiz/index2';
 import { useMatch } from "react-router-dom";
 import Auth from "./middleware/auth";
 

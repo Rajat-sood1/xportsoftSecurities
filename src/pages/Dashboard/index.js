@@ -3,19 +3,21 @@ import Cards from "../../components/dashboard-cards";
 import Modules from "../../data/Modules";
 import Header from "../../layout/header";
 import { Context } from "../../middleware/auth";
-import {  Navigate } from 'react-router'
+import {  Navigate } from 'react-router-dom'
+
+let moduleList = Modules;
 
 const Dashboard = () =>{
-     const {loggedInUser}=useContext(Context)
-     let moduleList = Modules;
+     //   AUTHENTICATING USER 
+     const {loggedInUser}=useContext(Context);
+
+     //  NAVIGATING IF NO USER
      if(loggedInUser.login===false){
           return <Navigate to="/" replace={true}/>
       }
-     console.log(loggedInUser);
      return(
           <>
-          <Header />          
-          
+          <Header />
           <div className="comp-container">
                <div className="comp-title">
                     <h1>Dashboard</h1>

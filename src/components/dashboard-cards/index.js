@@ -7,7 +7,7 @@ const Cards = ({ duration, progress, status }) => {
 
 
           <div className="card">
-               <NavLink to='/progress'>
+               <NavLink to='/modules'>
                     <div className="comp-title">
                          <h2>My Courses</h2>
                     </div>

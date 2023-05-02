@@ -1,13 +1,27 @@
 import { lazy } from 'react';
 import { useRoutes } from 'react-router-dom';
 
+const lazyRetry = function(componentImport) {
+  return new Promise((resolve, reject) => {
+      // try to import the component
+      componentImport().then((component) => {
+          resolve(component);
+      }).catch((error) => {
+          // TO DO
+          console.log("lazy retry",error);
+          reject(error); // there was an error
+      });
+  });
+};
+
+
 const SignInUp = lazy(() =>import('../pages/SignInUp'));
 const Dashboard = lazy(() => import('../pages/Dashboard'));
-const Progress =  import('../pages/progress');
-const Module = import('../pages/Module');
-const Quiz =  import('../pages/Quiz');
+const Modules =  lazy(() =>import('../pages/modules'));
+const Module = lazy(() =>lazyRetry(()=>import('../pages/Module')));
+const Quiz =  lazy(() =>import('../pages/Quiz'));
 
-const Routes = () =>{
+export const Routes = () =>{
      const routes = useRoutes([
      {
       path: '/',
@@ -15,14 +29,14 @@ const Routes = () =>{
     },
     {
       path: '/dashboard',
-      element: <Dashboard />,
+      element: <Dashboard />
     },
     {
-      path: '/progress',
-      element: <Progress />
+      path: '/modules',
+      element: <Modules />
     },
     {
-         path: '/:module/:id',
+         path: '/module/:id',
          element:<Module />,
          children:[
           {
@@ -35,4 +49,4 @@ const Routes = () =>{
 return routes
 } 
 
-export default Routes;
+// export default Routes;
