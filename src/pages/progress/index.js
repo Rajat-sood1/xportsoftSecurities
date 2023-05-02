@@ -2,14 +2,15 @@ import React, { useContext } from "react";
 import TableRow from "../../components/tableRows";
 import Header from "../../layout/header";
 import { Context } from "../../middleware/auth";
+import { Navigate } from "react-router-dom";
 
 
 const Progress = () => {
-     const Modules = useContext(Context);
-     console.log(Modules);
+     const { modules, loggedInUser } = useContext(Context);
 
-        
-
+     if(!loggedInUser.login){
+          return <Navigate to='/' replace={true}/>;
+     }
      return (
           <>
                <Header/>
@@ -38,7 +39,7 @@ const Progress = () => {
 
                               <tbody>
                                    {
-                                        Modules.map(({ id, duration, title, progress }) => {
+                                        modules.map(({ id, duration, title, progress }) => {
                                              return (
                                                   <TableRow key={id} id={id} duration={duration} title={title} progress={progress} />
 

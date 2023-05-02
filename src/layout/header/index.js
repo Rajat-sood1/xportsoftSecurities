@@ -1,26 +1,30 @@
-import React, { useEffect, useRef } from "react";
-// import Users from "../../utils/users/index"
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { Context } from "../../middleware/auth";
 
 const Header = () => {
-
+     let { loggedInUser, setLoggedInUser } = useContext(Context)
      const navbar = useRef();
      const content = useRef();
 
 
-     useEffect(()=>{
+     const [drop, SetDrop] = useState(false);
+
+     useEffect(() => {
           window.onscroll = () => {
-               let sticky = content.current.offsetTop;
+               let sticky = navbar?.offsetTop;
                if (content) {
-     
-                    if (window.pageYOffset >= sticky) {
-                         navbar.current.classList.add("sticky")
+
+                    if (window?.pageYOffset >= sticky) {
+                         navbar?.current?.classList?.add("sticky")
                     } else {
-                         navbar.current.classList.remove("sticky");
+                         navbar?.current?.classList?.remove("sticky");
                     }
                }
           }
      }, [])
+
+     console.log(loggedInUser)
      return (
           //   HEADER SECTION
           <div className="header">
@@ -35,31 +39,46 @@ const Header = () => {
                     <div className="head-nav">
                          <div className="user-nav d-flex">
                               <div className="runner">
-                                   <p>Welcome User!</p>
+                                   <p>{loggedInUser.Name}</p>
                               </div>
                               <div className="user">
                                    <div className="profile d-flex">
-                                        <div className="user-details d-flex">
+                                        <div className="user-details d-flex " onClick={() => SetDrop(!drop)} >
                                              <div>
 
-                                             <p>John Doe</p>
-                                             <sub>student</sub>
+                                                  <p>{loggedInUser.Name}</p>
+                                                  <sub>student</sub>
                                              </div>
-                                             <span>	&#9662;</span>
+                                             <span  className={drop?'after rotate':'after '}  >&#9662;</span>
                                         </div>
                                    </div>
                               </div>
+                              {drop ?
+                                   <div className="drop">
+                                        <ul>
+                                             <li>
+                                                  <button className="btn"> change Password</button>
+                                             </li>
+                                             <li>
+                                                  <button className="btn" onClick={() => {
+                                                       setLoggedInUser((e) => ({ ...e, login: false }))
+                                                  }}> logOut</button>
+                                             </li>
+                                        </ul>
+                                   </div>
+                                   : ""
+                              }
                          </div>
 
                          {/*       NAVBAR          */}
                          <div className="navbar" ref={navbar}>
                               <ul className="nav-links">
                                    <NavLink to='/dashboard'><li>Dashboard</li></NavLink>
-                                   <NavLink to='/training'><li>Training</li></NavLink>
+                                   <NavLink to='/progress'><li>Training</li></NavLink>
                                    <li>Settings</li>
                               </ul>
                          </div>
-                         <div className="content" ref={content}></div>
+                         <div className="content" ref={(content)}></div>
                     </div>
                </div>
           </div>

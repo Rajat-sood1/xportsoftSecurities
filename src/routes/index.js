@@ -3,9 +3,9 @@ import { useRoutes } from 'react-router-dom';
 
 const SignInUp = lazy(() =>import('../pages/SignInUp'));
 const Dashboard = lazy(() => import('../pages/Dashboard'));
-const Progress = lazy(() => import('../pages/progress'));
-const Module = lazy(() => import('../pages/Module'));
-const Quiz = lazy(() => import('../pages/Quiz'));
+const Progress =  import('../pages/progress');
+const Module = import('../pages/Module');
+const Quiz =  import('../pages/Quiz');
 
 const Routes = () =>{
      const routes = useRoutes([
@@ -18,16 +18,18 @@ const Routes = () =>{
       element: <Dashboard />,
     },
     {
-      path: '/module/progress',
-      element: <Progress />,
+      path: '/progress',
+      element: <Progress />
     },
     {
          path: '/:module/:id',
          element:<Module />,
-    },
-    {
-      path: '/quiz',
-      element: <Quiz />,
+         children:[
+          {
+            path:'quiz',
+            element: <Quiz />
+          }
+         ]
     },
 ]);
 return routes

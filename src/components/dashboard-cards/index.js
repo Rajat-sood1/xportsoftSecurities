@@ -2,11 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 
-const Cards = ({duration, progress, status})=>{
+const Cards = ({ duration, progress, status }) => {
      return (
-          <NavLink to='/module/progress'>
 
-               <div className="card">
+
+          <div className="card">
+               <NavLink to='/progress'>
                     <div className="comp-title">
                          <h2>My Courses</h2>
                     </div>
@@ -23,9 +24,10 @@ const Cards = ({duration, progress, status})=>{
                     <div className="card-footer">
                          <p>You will get your TCN and licence once you complete the course.</p>
                     </div>
-               </div>
+               </NavLink>
+          </div>
 
-          </NavLink>
+
      )
 }
 
