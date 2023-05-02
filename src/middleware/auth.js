@@ -6,33 +6,27 @@ const modules = Modules;
 
 export const Context = React.createContext(null);
 
-
+export let x = null;
 const Auth = ({ children }) => {
-
-     // const [ x, setX ] = useState(null);
-     const [userList,setUserList]=useState(Users);
-     let [ loggedInUser,setLoggedInUser ]=useState({
+     const [userList, setUserList] = useState(Users);
+     let [loggedInUser, setLoggedInUser] = useState({
           Name: null,
           Email: null,
-          password:null,
+          password: null,
           login: false,
-          sub:[]
-     }) 
-let x =null;
-// const compltUser=(i)=>{
-// loggedInUser.sub[i].isCompleted=true;
-// }
-
+          sub: []
+     })
+     
      const openModule = (i) => {
           let module = loggedInUser.sub.find(elem => elem.isActive);
+          (module?.isActive && (module.isActive = false));
           if (!loggedInUser.sub[i].isActive) {
                if (i === 0 || Boolean(loggedInUser.sub[i - 1].isCompleted)) {
-                    (module?.isActive && (module.isActive = false));
                     loggedInUser.sub[i].isActive = true;
                     clearInterval(x);
                     console.log(x);
                     document.title = loggedInUser.sub[i].title[i].title;
-                    x= setInterval(async () => {
+                    x = setInterval(async () => {
                          console.log("timer on")
                          loggedInUser.sub[i].duration--;
 
@@ -52,12 +46,10 @@ let x =null;
           }
      }
 
-
      return (
-          <Context.Provider value={{ loggedInUser,setLoggedInUser, modules,userList, setUserList, openModule }}>
+          <Context.Provider value={{ loggedInUser, setLoggedInUser, modules, userList, setUserList, openModule,x }}>
                {children}
           </Context.Provider>
      )
 }
-
 export default Auth;     
