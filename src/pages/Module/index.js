@@ -12,7 +12,7 @@ const Module = () => {
           return () => {
                clearInterval(x)
           }
-     }, [])
+     })
  
 
 

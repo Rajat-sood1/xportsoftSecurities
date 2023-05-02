@@ -6,7 +6,7 @@ import { Navigate } from "react-router-dom";
 
 
 const Modules = () => {
-     const { modules, loggedInUser } = useContext(Context);
+     const { loggedInUser } = useContext(Context);
 
      if (!loggedInUser.login) {
           return <Navigate to='/' replace={true} />;

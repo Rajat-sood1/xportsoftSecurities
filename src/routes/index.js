@@ -1,5 +1,6 @@
-import { lazy } from 'react';
+import { lazy, Suspense } from 'react';
 import { useRoutes } from 'react-router-dom';
+import Loading from '../components/Loading';
 
 const lazyRetry = function(componentImport) {
   return new Promise((resolve, reject) => {
@@ -25,23 +26,23 @@ export const Routes = () =>{
      const routes = useRoutes([
      {
       path: '/',
-      element: <SignInUp />,
+      element: (<Suspense fallback={<Loading />}><div className="body"><SignInUp/></div></Suspense>)
     },
     {
       path: '/dashboard',
-      element: <Dashboard />
+      element: (<Suspense fallback={<Loading />}><div className="component"><Dashboard /></div></Suspense>)
     },
     {
       path: '/modules',
-      element: <Modules />
+      element: (<Suspense fallback={<Loading />}><div className="component"><Modules /></div></Suspense>)
     },
     {
          path: '/module/:id',
-         element:<Module />,
+         element:(<Suspense fallback={<Loading />}><div className="component"><Module /></div></Suspense>),
          children:[
           {
             path:'quiz',
-            element: <Quiz />
+            element: (<Suspense fallback={<Loading />}><Quiz /></Suspense>)
           }
          ]
     },
