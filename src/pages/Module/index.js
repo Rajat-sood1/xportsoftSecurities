@@ -1,22 +1,31 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Slides from "../../components/slides";
 import Header from "../../layout/header";
 import { NavLink, Navigate, Outlet, useMatch, useParams } from "react-router-dom";
 import { Context } from "../../middleware/auth";
 
+const Module = () => {
+     const { x } = useContext(Context)
 
-const Module = () => {    
+     useEffect(() => {
+          console.log("Mounted...");
+          return () => {
+               clearInterval(x)
+          }
+     }, [])
+ 
+
 
      //   DESTRUCTURING OF GLOBAL STATES USING USECONTEXT
-      const { modules, loggedInUser } = useContext(Context);
+     const { modules, loggedInUser } = useContext(Context);
 
      // REQUESTED PARAMS FOR DYNAMIC ROUTING
      const { id } = useParams();
      const match = useMatch({ path: '/:module/:id/quiz' });
-     
+
      // NAVIGATE IS USER IS LOGGED OUT
-     if(!loggedInUser.login){
-          return <Navigate to='/' replace={true}/>;
+     if (!loggedInUser.login) {
+          return <Navigate to='/' replace={true} />;
      }
      return (
           <>

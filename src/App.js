@@ -1,9 +1,8 @@
 import { Suspense } from "react";
-import Routes from './routes';
+import{ Routes }from './routes';
 import './assets/styles/index.css'
 import { useMatch } from "react-router-dom";
 import Auth from "./middleware/auth";
-
 
 function App() {
   const routes = Routes();

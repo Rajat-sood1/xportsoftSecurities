@@ -5,15 +5,15 @@ import { Context } from "../../middleware/auth";
 import { Navigate } from "react-router-dom";
 
 
-const Progress = () => {
+const Modules = () => {
      const { modules, loggedInUser } = useContext(Context);
 
-     if(!loggedInUser.login){
-          return <Navigate to='/' replace={true}/>;
+     if (!loggedInUser.login) {
+          return <Navigate to='/' replace={true} />;
      }
      return (
           <>
-               <Header/>
+               <Header />
                <div className="comp-container">
                     <div className="comp-title">
                          <h1>Training</h1>
@@ -56,4 +56,4 @@ const Progress = () => {
      )
 }
 
-export default Progress;
+export default Modules;
