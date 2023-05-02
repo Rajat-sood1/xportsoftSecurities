@@ -636,11 +636,11 @@ ul.nav-links {
 
 
 /*                    MODULE SLIDES COMPONENT                 */
-iframe {
+.iframe {
      width: 50%;
      transform: translateX(50%);
-     z-index: -1;
-}
+     height: 503px;
+ }
 
 .q-link {
      position: fixed;

@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React from 'react';
+import { useContext } from "react";
 import TableRow from "../../components/tableRows";
 import Header from "../../layout/header";
 import { Context } from "../../middleware/auth";
@@ -8,6 +9,9 @@ import { Navigate } from "react-router-dom";
 const Modules = () => {
      const { loggedInUser } = useContext(Context);
 
+     // useEffect(()=>{
+     //      document.title = "XPORTSOFT | MODULES";
+     // }, [])
      if (!loggedInUser.login) {
           return <Navigate to='/' replace={true} />;
      }
@@ -38,14 +42,7 @@ const Modules = () => {
                               </thead>
 
                               <tbody>
-                                   {
-                                        loggedInUser.sub.map(({ id, duration, title, progress }) => {
-                                             return (
-                                                  <TableRow key={id} id={id} duration={duration} title={title} progress={progress} />
-
-                                             )
-                                        })
-                                   }
+                                   <TableRow />
                               </tbody>
 
                          </table>

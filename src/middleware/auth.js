@@ -25,7 +25,7 @@ const Auth = ({ children }) => {
                     loggedInUser.sub[i].isActive = true;
                     clearInterval(x);
                     console.log(x);
-                    document.title = loggedInUser.sub[i].title[i].title;
+                    document.title = loggedInUser.sub[i].title;
                     x = setInterval(async () => {
                          console.log("timer on")
                          loggedInUser.sub[i].duration--;

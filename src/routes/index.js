@@ -22,7 +22,7 @@ const Modules =  lazy(() =>import('../pages/modules'));
 const Module = lazy(() =>lazyRetry(()=>import('../pages/Module')));
 const Quiz =  lazy(() =>import('../pages/Quiz'));
 
-export const Routes = () =>{
+const Routes = () =>{
      const routes = useRoutes([
      {
       path: '/',
@@ -49,3 +49,5 @@ export const Routes = () =>{
 ]);
 return routes
 } 
+
+export default Routes;

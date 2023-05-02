@@ -1,19 +1,20 @@
-import React from 'react';
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Context } from '../../middleware/auth';
 
 
-const TableRow = ({ id, title, duration, progress }) => {
+const TableRow = () => {
 
      const { loggedInUser,openModule } = useContext(Context);
 
-     let hours = Math.floor(duration / 3600);
-     let minutes = Math.floor((duration % 3600) / 60);
-     let seconds = Math.floor(duration % 60);
+
      return (
           <>
-               <tr>
+          {loggedInUser.sub.map(({ id, duration, title, progress })=>{
+                    let hours = Math.floor(duration / 3600);
+                    let minutes = Math.floor((duration % 3600) / 60);
+                    let seconds = Math.floor(duration % 60);
+              return( <tr key={id}>
                     <td className="w-8 border">
                          {"Section " + id}
                     </td>
@@ -36,9 +37,13 @@ const TableRow = ({ id, title, duration, progress }) => {
                     </td>
 
                     <td className="w-25 border" >
-                         <NavLink to={`/module/${id-1}`}> <button onClick={()=>openModule(id-1)} className={loggedInUser.sub[id-1].isCompleted ? 'btn' : 'btn restricted'}>Review</button></NavLink>
+                         <NavLink to={`/module/${id}`}> <button onClick={()=>openModule(id-1)} className={loggedInUser.sub[id-1].isCompleted ? 'btn' : 'btn restricted'}>Review</button></NavLink>
                     </td>
-               </tr>
+               </tr>)
+
+
+          })}
+               
           </>
      )
 }

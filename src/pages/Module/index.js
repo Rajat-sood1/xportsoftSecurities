@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from "react";
-import Slides from "../../components/slides";
 import Header from "../../layout/header";
 import { NavLink, Navigate, Outlet, useMatch, useParams } from "react-router-dom";
 import { Context } from "../../middleware/auth";
@@ -12,12 +11,12 @@ const Module = () => {
           return () => {
                clearInterval(x)
           }
-     })
- 
+     }, [])
+
 
 
      //   DESTRUCTURING OF GLOBAL STATES USING USECONTEXT
-     const { modules, loggedInUser } = useContext(Context);
+     const { loggedInUser } = useContext(Context);
 
      // REQUESTED PARAMS FOR DYNAMIC ROUTING
      const { id } = useParams();
@@ -42,7 +41,7 @@ const Module = () => {
                                    <div className="comp-title">
                                         <h3>Welcome To The Security Guard Course</h3>
                                    </div>
-                                   <Slides src={modules[id].url} />
+                                   <iframe title="Module Slides" src={loggedInUser.sub[id - 1].url} frameBorder="0"></iframe>
                                    <div className="q-link">
                                         <div className="q-animate">
                                              <p>Click here to submit <b>Quiz</b></p>
