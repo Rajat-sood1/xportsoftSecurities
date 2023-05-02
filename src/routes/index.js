@@ -1,42 +1,50 @@
-import { lazy, Suspense } from 'react';
+import { lazy } from 'react';
 import { useRoutes } from 'react-router-dom';
+
+const lazyRetry = function(componentImport) {
+  return new Promise((resolve, reject) => {
+      // try to import the component
+      componentImport().then((component) => {
+          resolve(component);
+      }).catch((error) => {
+          // TO DO
+          console.log("lazy retry",error);
+          reject(error); // there was an error
+      });
+  });
+};
+
 
 const SignInUp = lazy(() =>import('../pages/SignInUp'));
 const Dashboard = lazy(() => import('../pages/Dashboard'));
-const Progress = lazy(() => import('../pages/progress'));
-const Module = lazy(() => import('../pages/Module'));
-const Quiz = lazy(() => import('../pages/Quiz'));
+const Modules =  lazy(() =>import('../pages/modules'));
+const Module = lazy(() =>lazyRetry(()=>import('../pages/Module')));
+const Quiz =  lazy(() =>import('../pages/Quiz'));
 
-const Routes = () =>{
+export const Routes = () =>{
      const routes = useRoutes([
      {
       path: '/',
-      element: (<Suspense fallback={<div>Loading...</div>}><SignInUp /></Suspense>),
+      element: <SignInUp />,
     },
     {
       path: '/dashboard',
-      element: (<Suspense fallback={<div>Loading...</div>}><Dashboard /></Suspense>),
+      element: <Dashboard />
     },
     {
       path: '/modules',
-      element: (
-        <Suspense fallback={<div>Loading...</div>}>
-          <Progress />
-        </Suspense>
-      )
+      element: <Modules />
     },
     {
-         path: '/:module/:id',
-         element:(<Suspense fallback={<div>Loading...</div>}><Module /></Suspense>),
+         path: '/module/:id',
+         element:<Module />,
          children:[
           {
             path:'quiz',
-            element: (<Suspense fallback={<div>Loading...</div>}><Quiz /></Suspense>)
+            element: <Quiz />
           }
          ]
     },
 ]);
 return routes
 } 
-
-export default Routes;

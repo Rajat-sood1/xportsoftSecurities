@@ -5,15 +5,15 @@ import { Context } from "../../middleware/auth";
 import { Navigate } from "react-router-dom";
 
 
-const Progress = () => {
+const Modules = () => {
      const { modules, loggedInUser } = useContext(Context);
 
-     if(!loggedInUser.login){
-          return <Navigate to='/' replace={true}/>;
+     if (!loggedInUser.login) {
+          return <Navigate to='/' replace={true} />;
      }
      return (
           <>
-               <Header/>
+               <Header />
                <div className="comp-container">
                     <div className="comp-title">
                          <h1>Training</h1>
@@ -39,7 +39,7 @@ const Progress = () => {
 
                               <tbody>
                                    {
-                                        modules.map(({ id, duration, title, progress }) => {
+                                        loggedInUser.sub.map(({ id, duration, title, progress }) => {
                                              return (
                                                   <TableRow key={id} id={id} duration={duration} title={title} progress={progress} />
 
@@ -56,4 +56,4 @@ const Progress = () => {
      )
 }
 
-export default Progress;
+export default Modules;
