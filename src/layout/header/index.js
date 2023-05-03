@@ -7,22 +7,21 @@ const Header = () => {
      const navbar = useRef();
      const content = useRef();
 
-
      const [drop, SetDrop] = useState(false);
 
-     useEffect(() => {
-          window.onscroll = () => {
-               let sticky = navbar?.offsetTop;
-               if (content) {
+     // useEffect(() => {
+     //      window.onscroll = () => {
+     //           let sticky = content.offsetTop;
+     //           if (content) {
 
-                    if (window?.pageYOffset >= sticky) {
-                         navbar?.current?.classList?.add("sticky")
-                    } else {
-                         navbar?.current?.classList?.remove("sticky");
-                    }
-               }
-          }
-     }, [])
+     //                if (window.pageYOffset >= sticky) {
+     //                     navbar.current.current.classList.add("sticky")
+     //                } else {
+     //                     navbar.current.classList.remove("sticky");
+     //                }
+     //           }
+     //      }
+     // }, [])
 
      console.log(loggedInUser)
      return (
@@ -78,7 +77,7 @@ const Header = () => {
                                    <li>Settings</li>
                               </ul>
                          </div>
-                         <div className="content" ref={(content)}></div>
+                         <div className="content" ref={content}></div>
                     </div>
                </div>
           </div>

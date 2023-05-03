@@ -20,7 +20,7 @@ const Module = () => {
 
      // REQUESTED PARAMS FOR DYNAMIC ROUTING
      const { id } = useParams();
-     const match = useMatch({ path: '/:module/:id/quiz' });
+     const match = useMatch({ path: '/modules/:id/quiz' });
 
      // NAVIGATE IS USER IS LOGGED OUT
      if (!loggedInUser.login) {
@@ -29,7 +29,10 @@ const Module = () => {
      return (
           <>
                {match ?
+               <>
                     <Outlet />
+
+                    </>
                     :
                     <>
                          <Header position={'position'} />
@@ -41,13 +44,13 @@ const Module = () => {
                                    <div className="comp-title">
                                         <h3>Welcome To The Security Guard Course</h3>
                                    </div>
-                                   <iframe title="Module Slides" src={loggedInUser.sub[id - 1].url} frameBorder="0"></iframe>
+                                   <iframe title="Module Slides" src={loggedInUser.sub[id - 1].url}></iframe>
                                    <div className="q-link">
                                         <div className="q-animate">
                                              <p>Click here to submit <b>Quiz</b></p>
                                              <span>&#11167;</span>
                                         </div>
-                                        <NavLink to='quiz'><button className="btn">Take Quiz</button></NavLink>
+                                        <NavLink to={`quiz`}><button className="btn">Take Quiz</button></NavLink>
                                    </div>
                               </div>
                          </div>

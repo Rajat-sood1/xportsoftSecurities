@@ -15,12 +15,25 @@ const SignInUp = () => {
      //   NEW USER SIGN UP FUNCTION
      const SignUp = (e) => {
           e.preventDefault();
-          setUserList((user) => ([...user, {
-               Name: userCredential.current.name.value,
-               Email: userCredential.current.Semail.value,
-               password: userCredential.current.Spassword.value,
-               login: false,
-          }]))
+          let status = userList.find((user)=>user.Email === userCredential.current.Semail.value);
+          if(!status){
+               if(!userCredential.current.Semail.value.includes('@')){alert('The Email you provided is not correct.') }
+               else{
+
+                    setUserList((user) => ([...user, {
+                         Name: userCredential.current.name.value,
+                         Email: userCredential.current.Semail.value,
+                         password: userCredential.current.Spassword.value,
+                         login: false,
+                    }]))
+                    alert('You have been registered successfuly, You can login with your credentials now');
+               }
+          }
+          else if(!userCredential.current.Semail.value.includes('@')){
+                    alert('The Email you provided is not correct.')
+          }else{
+               alert('we found an account linked with us using this ID' + userCredential.current.Semail.value);
+          }
      }
 
      //  EXISTING USER LOGIN FUNCTION
