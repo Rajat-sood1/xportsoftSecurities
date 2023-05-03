@@ -1,8 +1,6 @@
 import React from "react";
-import Modules from "../data/Modules";
 import { useState } from "react";
 import Users from "../data/Users";
-const modules = Modules;
 
 export const Context = React.createContext(null);
 
@@ -14,7 +12,6 @@ const Auth = ({ children }) => {
           Email: null,
           password: null,
           login: false,
-          sub: []
      })
      
      const openModule = (i) => {
@@ -47,7 +44,7 @@ const Auth = ({ children }) => {
      }
 
      return (
-          <Context.Provider value={{ loggedInUser, setLoggedInUser, modules, userList, setUserList, openModule,x }}>
+          <Context.Provider value={{ loggedInUser, setLoggedInUser, userList, setUserList, openModule,x }}>
                {children}
           </Context.Provider>
      )

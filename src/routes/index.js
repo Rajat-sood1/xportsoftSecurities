@@ -1,48 +1,31 @@
-import { lazy, Suspense } from 'react';
 import { useRoutes } from 'react-router-dom';
-import Loading from '../components/Loading';
-
-const lazyRetry = function(componentImport) {
-  return new Promise((resolve, reject) => {
-      // try to import the component
-      componentImport().then((component) => {
-          resolve(component);
-      }).catch((error) => {
-          // TO DO
-          console.log("lazy retry",error);
-          reject(error); // there was an error
-      });
-  });
-};
-
-
-const SignInUp = lazy(() =>import('../pages/SignInUp'));
-const Dashboard = lazy(() => import('../pages/Dashboard'));
-const Modules =  lazy(() =>import('../pages/modules'));
-const Module = lazy(() =>lazyRetry(()=>import('../pages/Module')));
-const Quiz =  lazy(() =>import('../pages/Quiz'));
+import SignInUp from '../pages/SignInUp';
+import Dashboard from '../pages/Dashboard';
+import Modules from '../pages/modules';
+import Module from '../pages/Module';
+import QuizView from '../pages/Quiz';
 
 const Routes = () =>{
      const routes = useRoutes([
      {
       path: '/',
-      element: (<Suspense fallback={<Loading />}><div className="body"><SignInUp/></div></Suspense>)
+      element: (<div className="body"><SignInUp/></div>)
     },
     {
       path: '/dashboard',
-      element: (<Suspense fallback={<Loading />}><div className="component"><Dashboard /></div></Suspense>)
+      element: (<div className="component"><Dashboard /></div>)
     },
     {
       path: '/modules',
-      element: (<Suspense fallback={<Loading />}><div className="component"><Modules /></div></Suspense>)
+      element: (<div className="component"><Modules /></div>)
     },
     {
-         path: '/module/:id',
-         element:(<Suspense fallback={<Loading />}><div className="component"><Module /></div></Suspense>),
+         path: '/modules/:id',
+         element:(<div className="component"><Module /></div>),
          children:[
           {
             path:'quiz',
-            element: (<Suspense fallback={<Loading />}><Quiz /></Suspense>)
+            element: (<QuizView />)
           }
          ]
     },

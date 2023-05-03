@@ -1,30 +1,25 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Context } from "../../middleware/auth";
 
 const Header = () => {
-     let { loggedInUser, setLoggedInUser } = useContext(Context)
+     let { loggedInUser, setLoggedInUser } = useContext(Context);
      const navbar = useRef();
-     const content = useRef();
-
 
      const [drop, SetDrop] = useState(false);
 
-     useEffect(() => {
-          window.onscroll = () => {
-               let sticky = navbar?.offsetTop;
-               if (content) {
+     window.onscroll = () => {
+          if (navbar.second !== null) {
+               let sticky = navbar.second?.offsetTop;
 
-                    if (window?.pageYOffset >= sticky) {
-                         navbar?.current?.classList?.add("sticky")
-                    } else {
-                         navbar?.current?.classList?.remove("sticky");
-                    }
+               if (window.pageYOffset >= sticky) {
+                    navbar.first.classList.add("sticky")
+               } else {
+                    navbar.first.classList.remove("sticky");
                }
           }
-     }, [])
+     }
 
-     console.log(loggedInUser)
      return (
           //   HEADER SECTION
           <div className="header">
@@ -39,7 +34,7 @@ const Header = () => {
                     <div className="head-nav">
                          <div className="user-nav d-flex">
                               <div className="runner">
-                                   <p>{loggedInUser.Name}</p>
+                                   <p>Welcome {loggedInUser.Name}!</p>
                               </div>
                               <div className="user">
                                    <div className="profile d-flex">
@@ -49,7 +44,7 @@ const Header = () => {
                                                   <p>{loggedInUser.Name}</p>
                                                   <sub>student</sub>
                                              </div>
-                                             <span  className={drop?'after rotate':'after '}  >&#9662;</span>
+                                             <span className={drop ? 'after rotate' : 'after '}  >&#9662;</span>
                                         </div>
                                    </div>
                               </div>
@@ -71,14 +66,14 @@ const Header = () => {
                          </div>
 
                          {/*       NAVBAR          */}
-                         <div className="navbar" ref={navbar}>
+                         <div className="navbar" ref={(el) => (navbar.first = el)}>
                               <ul className="nav-links">
                                    <NavLink to='/dashboard'><li>Dashboard</li></NavLink>
                                    <NavLink to='/modules'><li>Training</li></NavLink>
                                    <li>Settings</li>
                               </ul>
                          </div>
-                         <div className="content" ref={(content)}></div>
+                         <div className="content" ref={(el) => (navbar.second = el)}></div>
                     </div>
                </div>
           </div>

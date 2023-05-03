@@ -74,7 +74,7 @@ a {
      cursor: pointer;
      background: var(--btn-color);
      padding: 10px 27px;
- }
+}
 
 
 .s-btn,
@@ -436,13 +436,14 @@ tr {
      font-size: 1.2rem;
      font-weight: 800;
 }
+
 .restricted::after {
      content: '';
      background: url(../images/white_lock.svg) no-repeat 9px;
      width: 22px;
      display: inline-block;
      height: 12px;
- }
+}
 
 /*                  HEADER COMPONENT                */
 .header {
@@ -536,10 +537,12 @@ tr {
      right: 2.99%;
      height: 100%;
 }
-.rotate{
+
+.rotate {
      transition: 2s;
      transform: rotate(61deg);
 }
+
 .drop {
      position: absolute;
      background: white;
@@ -549,10 +552,12 @@ tr {
      top: 68px;
      border: 2px solid gold;
      border-radius: 10px;
- }
- .drop ul li{
-     margin-top:8px;
- }
+}
+
+.drop ul li {
+     margin-top: 8px;
+}
+
 .profile {
      height: 100%;
 }
@@ -563,9 +568,9 @@ tr {
      background-size: 57px;
      width: 60px;
      height: 55px;
- }
+}
 
- .user-details {
+.user-details {
      position: relative;
      border: 2px solid var(--primary-color);
      padding: 5.5px;
@@ -574,15 +579,16 @@ tr {
      gap: 14px;
      cursor: pointer;
      border-radius: 4px;
- }
+}
 
 .user-details p {
      font-size: 1.025rem;
      font-weight: 700;
 }
+
 .user-details span {
      font-size: 1.5rem;
- }
+}
 
 
 /*                  NAVBAR                       */
@@ -636,11 +642,11 @@ ul.nav-links {
 
 
 /*                    MODULE SLIDES COMPONENT                 */
-.iframe {
+iframe {
      width: 50%;
      transform: translateX(50%);
      height: 503px;
- }
+}
 
 .q-link {
      position: fixed;
@@ -694,4 +700,41 @@ p.q-no {
 .quiz-container p {
      font-size: 1.4rem;
      font-weight: 500;
+}
+
+.radio {
+     position: relative;
+}
+
+.radio input[type="radio"] {
+     appearance: none;
+     background-color: #fff;
+     margin: 0;
+     font: inherit;
+     width: 9em;
+     cursor: pointer;
+     height: 3em;
+}
+
+.radio span {
+     display: inline-block;
+     color: #817c7c;
+     padding: 0px 11px;
+     font-size: 14px;
+     cursor: pointer;
+     position: absolute;
+     top: 17px;
+     left: 0;
+     font-weight: 550;
+     letter-spacing: 0.6px;
+}
+
+.radio input[type="radio"]:checked+span {
+     color: indigo;
+}
+
+.q-next {
+     text-align: right;
+     width: 83%;
+     margin-top: 59px;
 }

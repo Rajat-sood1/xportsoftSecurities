@@ -1,4 +1,7 @@
+import Questions from "./Questions";
+
 let Modules = [
+     
      {
           id:1,
           title: 'Introduction to the Security Industry',
@@ -7,7 +10,8 @@ let Modules = [
           isActive:false,
           Marks:0,
           duration:10,
-          progress: "00:00:00"
+          progress: 0,
+          quiz:Questions
 
      },
      
@@ -19,7 +23,8 @@ let Modules = [
           isActive:false,
           Marks:0,
           duration:10,
-          progress: "00:00:00"
+          progress: 0,
+          quiz:Questions
           
      },
      
@@ -31,7 +36,8 @@ let Modules = [
           isActive:false,
           Marks:0,
           duration:1234,
-          progress: "00:00:00"
+          progress: 0,
+          quiz:Questions
           
      },
      
@@ -43,7 +49,8 @@ let Modules = [
           isActive:false,
           Marks:0,
           duration:1245,
-          progress: "00:00:00"
+          progress: 0,
+          quiz:Questions
           
      },
      
@@ -55,7 +62,8 @@ let Modules = [
           isActive:false,
           Marks:0,
           duration:1442,
-          progress: "00:00:00"
+          progress: 0,
+          quiz:Questions
           
      },
      
@@ -67,7 +75,8 @@ let Modules = [
           isActive:false,
           Marks:0,
           duration:1895,
-          progress: "00:00:00"
+          progress: 0,
+          quiz:Questions
           
      },
      
@@ -79,7 +88,8 @@ let Modules = [
           isActive:false,
           Marks:0,
           duration:4154,
-          progress: "00:00:00"
+          progress: 0,
+          quiz:Questions
           
      },
      
@@ -91,7 +101,8 @@ let Modules = [
           isActive:false,
           Marks:0,
           duration:1542,
-          progress: "00:00:00"
+          progress: 0,
+          quiz:Questions
           
      },
      
@@ -103,7 +114,8 @@ let Modules = [
           isActive:false,
           Marks:0,
           duration:1452,
-          progress: "00:00:00"
+          progress: 0,
+          quiz:Questions
           
      },
      
@@ -115,7 +127,8 @@ let Modules = [
           isActive:false,
           Marks:0,
           duration:2154,
-          progress: "00:00:00"
+          progress: 0,
+          quiz:Questions
           
      },
      
@@ -127,9 +140,10 @@ let Modules = [
           isActive:false,
           Marks:0,
           duration:2141,
-          progress: "00:00:00"
-          
+          progress: 0,
+          quiz:Questions   
      }
+
 ];
 
 export default Modules;
