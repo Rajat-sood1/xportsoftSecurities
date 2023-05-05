@@ -25,9 +25,9 @@ const Auth = ({ children }) => {
                     document.title = loggedInUser.sub[i].title;
                     x = setInterval(async () => {
                          console.log("timer on")
-                         loggedInUser.sub[i].duration--;
+                         loggedInUser.sub[i].progress++;
 
-                         if (loggedInUser.sub[i].duration <= 0) {
+                         if (loggedInUser.sub[i].progress === loggedInUser.sub[i].duration) {
                               clearInterval(x)
                               loggedInUser.sub[i].isCompleted = true;
                               console.log("timer Expired");

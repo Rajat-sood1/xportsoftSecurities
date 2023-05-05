@@ -1,11 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { TotalDuration, TotalProgress } from "../../utils/TimeFormat/TimeFormat";
 
 
-const Cards = ({ duration, progress, status }) => {
+const Cards = () => {
+
+     const duration = TotalDuration();
+     const progress = TotalProgress();
+
      return (
-
-
           <div className="card">
                <NavLink to='/modules'>
                     <div className="comp-title">
@@ -15,9 +18,9 @@ const Cards = ({ duration, progress, status }) => {
                          <div className="d-flex">
                               <h4>GoodLife Security Course</h4>
                               <div className="status">
-                                   <p>Duration: {duration}</p>
-                                   <p>Progress: {progress}</p>
-                                   <p>Status: {status}</p>
+                                   <p>Duration:<span> {duration[0] + ":" + duration[1] + ":" + duration[2]}</span></p>
+                                   <p>Progress:<span> {progress[0] + ":" + progress[1] + ":" + progress[2]}</span></p>
+                                   <p>Status:<span> {(duration[0] === progress[0]) && (duration[1] === progress[1]) ? 'Training Completed' : (progress[0] === '00' && progress[2] === '00') ? 'Not Started' : 'Pending'}</span></p>
                               </div>
                          </div>
                     </div>

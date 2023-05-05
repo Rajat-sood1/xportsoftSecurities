@@ -1,15 +1,14 @@
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Context } from '../../middleware/auth';
+import { Duration, Progress } from '../../utils/TimeFormat/TimeFormat';
 
 
-const TableRow = ({ id, duration, title, progress }) => {
-
+const TableRow = ({ id, title }) => {
      const { loggedInUser, openModule } = useContext(Context);
-     let hours = Math.floor(duration / 3600);
-     let minutes = Math.floor((duration % 3600) / 60);
-     let seconds = Math.floor(duration % 60);
-
+     const i = id - 1;
+     const progress = Progress(i);
+     const duration = Duration(i);
      return (
           <>
                <tr key={id}>
@@ -22,16 +21,16 @@ const TableRow = ({ id, duration, title, progress }) => {
                          </h3>
                     </td>
                     <td className="w-8 border">
-                         {hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0') + ": " + seconds.toString().padStart(2, '0')}
+                         {duration[0] + ":" + duration[1] + ":" + duration[2]}
                     </td>
                     <td className="w-8 border">
-                         {progress}
+                         {progress[0] + ":" + progress[1] + ":" + progress[2]}
                     </td>
                     <td className="w-8 border">
-                         {loggedInUser.sub[id - 1].isCompleted ? <span className='sts'>&#10003;</span> : <span className='sts-r'>&#128473;</span>}
+                         <span className={loggedInUser.sub[id - 1].isCompleted ? 'sts' : 'sts-r'}></span>
                     </td>
-                    <td className="w-8 border sts">
-                         {loggedInUser.sub[id - 1].isCompleted ? <span className='sts'>&#10003;</span> : <span className='sts-r'> &#128473;</span>}
+                    <td className="w-8 border">
+                         <span className={!loggedInUser.sub[id - 1].Marks > 2 ? 'sts' : 'sts-r'}></span>
                     </td>
 
                     <td className="w-25 border" >

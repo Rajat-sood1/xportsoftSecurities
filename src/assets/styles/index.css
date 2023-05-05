@@ -45,10 +45,11 @@
 /*               SIGN-IN-UP  COMPONENT               */
 
 
-
-h1 {
-     font-weight: bold;
-     margin: 0;
+#signIn h1,
+#signUp h1 {
+     color: #525252;
+     text-transform: uppercase;
+     white-space: nowrap;
 }
 
 span {
@@ -63,7 +64,7 @@ a {
 }
 
 .btn {
-     border-radius: 20px;
+     border-radius: 8px;
      border: 1px solid;
      color: #FFFFFF;
      font-size: 12px;
@@ -73,7 +74,7 @@ a {
      transition: transform 80ms ease-in;
      cursor: pointer;
      background: var(--btn-color);
-     padding: 10px 27px;
+     padding: 8px 24px;
 }
 
 
@@ -81,6 +82,10 @@ a {
 .ghost {
      font-size: .92rem;
      padding: 10px 32px;
+     background: gold;
+     border: 1px solid white;
+     color: #635757;
+     border-radius: 29px;
 }
 
 button:active {
@@ -114,6 +119,10 @@ button.ghost {
      padding: 12px 15px;
      margin: 8px 0;
      width: 100%;
+}
+
+input.login:nth-child(6) {
+     margin-bottom: 20px;
 }
 
 .container {
@@ -190,9 +199,8 @@ button.ghost {
 }
 
 .overlay {
-     background: var(--primary-color);
-     background: -webkit-linear-gradient(to bottom, rgb(255, 248, 236), var(--primary-color));
-     background: linear-gradient(to bottom right, gold, var(--primary-color), goldenrod);
+     background: -webkit-linear-gradient(to bottom right, gold, goldenrod);
+     background: linear-gradient(to bottom right, gold, goldenrod);
      background-repeat: no-repeat;
      background-size: cover;
      background-position: 0 0;
@@ -286,9 +294,10 @@ footer a {
 
 .card {
      width: 50%;
-     padding: 10px;
-     border: 1px solid var(--primary-color);
+     padding: 8px;
+     border: 2px solid var(--primary-color);
      box-shadow: 3px 8px 24px -8px black;
+     cursor: pointer;
 }
 
 .card .comp-title {
@@ -311,18 +320,37 @@ footer a {
      align-items: start;
 }
 
+
 .card-footer {
      text-align: center;
-     line-height: 38px;
-     margin: 43px 0px 1px;
-     background: gold;
+     line-height: 40px;
+     margin: 37px 0px 1px;
+     background: var(--primary-color);
+     color: white;
      border-radius: 7px;
 }
 
 .status {
-     font-size: 0.850rem;
-     word-spacing: 8px;
-     margin: 15px 3px 0px;
+     font-size: 1.09rem;
+     word-spacing: 2px;
+     margin: 19px 31px 0px;
+     line-height: 21px;
+     width: 132px;
+     display: table;
+     white-space: nowrap;
+}
+
+.status span {
+     color: #5d5b5b;
+     font-size: .850rem;
+     font-weight: 400;
+     display: table-cell;
+}
+
+.status p {
+     color: var(--primary-color);
+     font-weight: 550;
+     display: table-row;
 }
 
 /*              PROGRESS COMPONENT               */
@@ -426,15 +454,19 @@ tr {
 }
 
 .sts {
-     color: green;
-     font-size: 1.2rem;
-     font-weight: 800;
+     background: url(../images/check.png) no-repeat 20px;
+     background-size: 22px;
+     width: 62px;
+     display: inline-block;
+     height: 24px;
 }
 
 .sts-r {
-     color: red;
-     font-size: 1.2rem;
-     font-weight: 800;
+     background: url(../images/remove.png) no-repeat;
+     background-size: 21px;
+     width: 22px;
+     display: inline-block;
+     height: 24px;
 }
 
 .restricted::after {

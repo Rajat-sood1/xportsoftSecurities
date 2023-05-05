@@ -48,6 +48,8 @@ const Header = () => {
                                         </div>
                                    </div>
                               </div>
+
+                              {/*   DROPDOWN FOR LOGOUT AND CHANGE PASSWORD */}
                               {drop ?
                                    <div className="drop">
                                         <ul>

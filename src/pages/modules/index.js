@@ -9,7 +9,7 @@ import { Navigate } from "react-router-dom";
 const Modules = () => {
      const { loggedInUser } = useContext(Context);
 
-     useEffect(()=>{
+     useEffect(() => {
           document.title = "XPORTSOFT | MODULES";
      }, [])
      if (!loggedInUser.login) {
@@ -44,8 +44,8 @@ const Modules = () => {
                               <tbody>
 
                                    {
-                                        loggedInUser.sub.map(({ id, duration, progress, title }) => {
-                                             return (<TableRow key={id} id={id} duration={duration} progress={progress} title={title} />)
+                                        loggedInUser.sub.map(({ id, title }) => {
+                                             return (<TableRow key={id} id={id} title={title} />)
                                         })
                                    }
                               </tbody>

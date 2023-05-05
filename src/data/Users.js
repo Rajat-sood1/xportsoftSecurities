@@ -6,7 +6,7 @@ let Users = [
           Email: 'john@test.com',
           password:'123456',
           login: false,
-          sub: Modules
+          sub: JSON.parse(JSON.stringify(Modules))
      }
 ]
 

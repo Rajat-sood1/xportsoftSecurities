@@ -26,7 +26,7 @@ const SignInUp = () => {
                          Email: userCredential.current.Semail.value,
                          password: userCredential.current.Spassword.value,
                          login: false,
-                         sub:Modules
+                         sub: JSON.parse(JSON.stringify(Modules))
                     }]))
                     alert('You have been registered successfuly, You can login with your credentials now');
                }
@@ -68,6 +68,7 @@ const SignInUp = () => {
                     
                }
           };
+          console.log(loggedInUser);
 
      // IF USER ALREADY LOGGED IN
      if (loggedInUser.login) {

@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 const QuizView = () => {
     const { id } = useParams();
     const { loggedInUser } = useContext(Context);
-    const Questions = loggedInUser.sub[id-1].quiz;
+    const Questions = loggedInUser.sub[id - 1].quiz;
 
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -46,7 +46,7 @@ const QuizView = () => {
                 score++;
             }
         };
-        loggedInUser.sub[id].Marks = score;
+        loggedInUser.sub[id - 1].Marks = score;
         return score;
     };
 
@@ -66,7 +66,7 @@ const QuizView = () => {
                             ?
                             <Results getScore={getScore} Questions={Questions} answers={answers} handleRestartClick={handleRestartClick} />
                             :
-                            <Quiz Questions={Questions} answers={answers} handleAnswerSelect={handleAnswerSelect} handleNextClick={handleNextClick} currentQuestionIndex={currentQuestionIndex} next={showNext}/>
+                            <Quiz Questions={Questions} answers={answers} handleAnswerSelect={handleAnswerSelect} handleNextClick={handleNextClick} currentQuestionIndex={currentQuestionIndex} next={showNext} />
                     }
 
                 </div>
