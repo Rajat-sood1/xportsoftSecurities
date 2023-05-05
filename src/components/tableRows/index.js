@@ -30,12 +30,12 @@ const TableRow = ({ id, title }) => {
                          <span className={loggedInUser.sub[id - 1].isCompleted ? 'sts' : 'sts-r'}></span>
                     </td>
                     <td className="w-8 border">
-                         <span className={!loggedInUser.sub[id - 1].Marks > 2 ? 'sts' : 'sts-r'}></span>
+                         <span className={loggedInUser.sub[id - 1].Marks >= 2 ? 'sts' : 'sts-r'}></span>
                     </td>
 
                     <td className="w-25 border" >
                          {
-                              id === 1 || loggedInUser.sub[id - 2].isCompleted
+                              id === 1 || loggedInUser.sub[id - 2].Marks >= 2
                                    ?
                                    <NavLink to={`${id}`} > <button onClick={() => openModule(id - 1)} className='btn' >Review</button></NavLink>
                                    :

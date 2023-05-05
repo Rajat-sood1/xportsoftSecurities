@@ -16,10 +16,10 @@ const SignInUp = () => {
      //   NEW USER SIGN UP FUNCTION
      const SignUp = (e) => {
           e.preventDefault();
-          let status = userList.find((user)=>user.Email === userCredential.current.Semail.value);
-          if(!status){
-               if(!userCredential.current.Semail.value.includes('@')){alert('The Email you provided is not correct.') }
-               else{
+          let status = userList.find((user) => user.Email === userCredential.current.Semail.value);
+          if (!status) {
+               if (!userCredential.current.Semail.value.includes('@')) { alert('The Email you provided is not correct.') }
+               else {
 
                     setUserList((user) => ([...user, {
                          Name: userCredential.current.name.value,
@@ -30,7 +30,7 @@ const SignInUp = () => {
                     }]))
                     alert('You have been registered successfuly, You can login with your credentials now');
                }
-          }else{
+          } else {
                alert('we found an account linked with us using this ID ' + userCredential.current.Semail.value);
           }
      }
@@ -40,35 +40,34 @@ const SignInUp = () => {
           e.preventDefault();
           const loggingUser = userList.find(
                (user) => user.Email === userCredential.current.email.value
-               );
-               if ( loggingUser !== undefined ) {
-                    if(loggingUser.email === loggedInUser.Email){
-                         setLoggedInUser((user)=>({...user, login:true}))
-                    }
-                    else if (loggingUser.password === userCredential.current.password.value) {
-                         setLoggedInUser((elem) => ({
-                              ...elem,
-                              Name: loggingUser.Name,
-                              Email: loggingUser.Email,
-                              password: loggingUser.password,
-                              login: true,
-                              sub: loggingUser.sub
-                         }
-                         
-                         ))
-                         
-                    } else {
-                         alert("Password Didn't match");
-                         userCredential.current.password.value = "";
-                    }
-               } else {
-                    alert("User Doesn't Exist");
-                    userCredential.current.password.value = "";
-                    userCredential.current.email.value = "";
-                    
+          );
+          if (loggingUser !== undefined) {
+               if (loggingUser.email === loggedInUser.Email) {
+                    setLoggedInUser((user) => ({ ...user, login: true }))
                }
-          };
-          console.log(loggedInUser);
+               else if (loggingUser.password === userCredential.current.password.value) {
+                    setLoggedInUser((elem) => ({
+                         ...elem,
+                         Name: loggingUser.Name,
+                         Email: loggingUser.Email,
+                         password: loggingUser.password,
+                         login: true,
+                         sub: loggingUser.sub
+                    }
+
+                    ))
+
+               } else {
+                    alert("Password Didn't match");
+                    userCredential.current.password.value = "";
+               }
+          } else {
+               alert("User Doesn't Exist");
+               userCredential.current.password.value = "";
+               userCredential.current.email.value = "";
+
+          }
+     };
 
      // IF USER ALREADY LOGGED IN
      if (loggedInUser.login) {

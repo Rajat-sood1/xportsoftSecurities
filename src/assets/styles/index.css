@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,800');
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap");
 
 /*                   DEFAULT STYLE              */
@@ -364,14 +364,12 @@ footer a {
 .comp-title {
      display: block;
      width: 100%;
-     padding: 10px 4px;
+     padding: 10px 2px;
 }
 
 .comp-title h1 {
-     margin: 0;
-     font-size: 1.250rem;
-     line-height: 2.4;
-     margin-top: 10px;
+     font-size: 1.450rem;
+     margin-top: 24px;
      font-weight: 500;
 }
 
@@ -390,6 +388,7 @@ footer a {
      padding: 20px;
      margin-bottom: 30px;
      position: relative;
+     margin-top: 24px;
 }
 
 table {
@@ -571,7 +570,7 @@ tr {
 }
 
 .rotate {
-     transition: 2s;
+     transition: 0.7s;
      transform: rotate(61deg);
 }
 
@@ -608,7 +607,7 @@ tr {
      padding: 5.5px;
      background: #fff;
      color: black;
-     gap: 14px;
+     gap: 8px;
      cursor: pointer;
      border-radius: 4px;
 }
@@ -619,7 +618,7 @@ tr {
 }
 
 .user-details span {
-     font-size: 1.5rem;
+     font-size: 1.8rem;
 }
 
 

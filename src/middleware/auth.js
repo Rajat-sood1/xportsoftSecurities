@@ -12,8 +12,9 @@ const Auth = ({ children }) => {
           Email: null,
           password: null,
           login: false,
+          sub: []
      })
-     
+
      const openModule = (i) => {
           let module = loggedInUser.sub.find(elem => elem.isActive);
           (module?.isActive && (module.isActive = false));
@@ -21,16 +22,20 @@ const Auth = ({ children }) => {
                if (i === 0 || Boolean(loggedInUser.sub[i - 1].isCompleted)) {
                     loggedInUser.sub[i].isActive = true;
                     clearInterval(x);
-                    console.log(x);
                     document.title = loggedInUser.sub[i].title;
                     x = setInterval(async () => {
-                         console.log("timer on")
-                         loggedInUser.sub[i].progress++;
 
-                         if (loggedInUser.sub[i].progress === loggedInUser.sub[i].duration) {
+                         if (loggedInUser.sub[i].progress >= loggedInUser.sub[i].duration) {
+                              setLoggedInUser((prevState) => {
+                                   const updatedSub = [...prevState.sub];
+                                   updatedSub[i].isCompleted = true;
+                                   return { ...prevState, sub: updatedSub };
+                              });
                               clearInterval(x)
-                              loggedInUser.sub[i].isCompleted = true;
-                              console.log("timer Expired");
+                              console.log(loggedInUser)
+                         } else {
+                              loggedInUser.sub[i].progress++;
+
                          }
 
                     }, 1000)
@@ -44,7 +49,7 @@ const Auth = ({ children }) => {
      }
 
      return (
-          <Context.Provider value={{ loggedInUser, setLoggedInUser, userList, setUserList, openModule,x }}>
+          <Context.Provider value={{ loggedInUser, setLoggedInUser, userList, setUserList, openModule, x }}>
                {children}
           </Context.Provider>
      )

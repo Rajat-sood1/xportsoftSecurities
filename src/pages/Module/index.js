@@ -1,13 +1,16 @@
 import React, { useContext, useEffect } from "react";
 import Header from "../../layout/header";
-import { NavLink, Navigate, Outlet, useMatch, useParams } from "react-router-dom";
+import { Navigate, Outlet, useMatch, useParams } from "react-router-dom";
 import { Context } from "../../middleware/auth";
+import Button from "../../components/Button/Button";
+import { Progress } from "../../utils/TimeFormat/TimeFormat";
 
 const Module = () => {
      const { x } = useContext(Context)
+     console.log("Module component")
 
      useEffect(() => {
-          console.log("Mounted...");
+          console.log(x)
           return () => {
                clearInterval(x)
           }
@@ -26,6 +29,8 @@ const Module = () => {
      if (!loggedInUser.login) {
           return <Navigate to='/' replace={true} />;
      }
+     const i = id - 1;
+     const progress = Progress(i);
      return (
           <>
                <Header position={'position'} />
@@ -41,6 +46,7 @@ const Module = () => {
                               <div className="module-sec">
                                    <div className="comp-title">
                                         <h3>Welcome To The Security Guard Course</h3>
+                                        {progress[0] + ":" + progress[1] + ":" + progress[2]}
                                    </div>
                                    <iframe title="Module Slides" src={loggedInUser.sub[id - 1].url}></iframe>
                                    <div className="q-link">
@@ -48,7 +54,7 @@ const Module = () => {
                                              <p>Click here to submit <b>Quiz</b></p>
                                              <span>&#11167;</span>
                                         </div>
-                                        <NavLink to='quiz'><button className="btn">Take Quiz</button></NavLink>
+                                        <Button i={id - 1} />
                                    </div>
                               </div>
                          </div>

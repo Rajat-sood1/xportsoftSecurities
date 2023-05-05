@@ -9,7 +9,7 @@ let Modules = [
           isCompleted: false,
           isActive: false,
           Marks: 0,
-          duration: 10,
+          duration: 3,
           progress: 0,
           quiz: Questions
 
@@ -22,7 +22,7 @@ let Modules = [
           isCompleted: false,
           isActive: false,
           Marks: 0,
-          duration: 7200,
+          duration: 7,
           progress: 0,
           quiz: Questions
 
