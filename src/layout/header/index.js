@@ -4,21 +4,31 @@ import { Context } from "../../middleware/auth";
 
 const Header = () => {
      let { loggedInUser, setLoggedInUser } = useContext(Context);
-     const navbar = useRef();
+     const element = useRef();
 
-     const [drop, SetDrop] = useState(false);
+     const [drop, setDrop] = useState(false);
+
+     document.addEventListener('click', (e) => {
+          if (!element.drop.contains(e.target) && drop) {
+               element.drop.classList.add('none');
+               setDrop(!drop)
+          }
+     })
 
      window.onscroll = () => {
-          if (navbar.second !== null) {
-               let sticky = navbar.second?.offsetTop;
+          if (element.second !== null) {
+               setDrop(false);
+               let sticky = element.second?.offsetTop;
+               element.drop.classList.add('none');
 
                if (window.pageYOffset >= sticky) {
-                    navbar.first.classList.add("sticky")
+                    element.first.classList.add("sticky")
                } else {
-                    navbar.first.classList.remove("sticky");
+                    element.first.classList.remove("sticky");
                }
           }
      }
+
 
      return (
           //   HEADER SECTION
@@ -38,44 +48,40 @@ const Header = () => {
                               </div>
                               <div className="user">
                                    <div className="profile d-flex">
-                                        <div className="user-details d-flex " onClick={() => SetDrop(!drop)} >
+                                        <div className="user-details d-flex " onClick={() => { drop ? element.drop.classList.add('none') && element.arrow.classList.remove('rotate') : element.drop.classList.remove('none') && element.arrow.classList.add('rotate'); setDrop(!drop) }} >
                                              <div>
-
                                                   <p>{loggedInUser.Name}</p>
                                                   <sub>student</sub>
                                              </div>
-                                             <span className={drop ? 'after rotate' : 'after '}  >&#9662;</span>
+                                             <span ref={(el) => (element.arrow = el)}>&#9662;</span>
+                                        </div>
+                                        <div className="drop none" ref={(el) => (element.drop = el)}>
+                                             <ul>
+                                                  <li>
+                                                       <button className="link"> change Password</button>
+                                                  </li>
+                                                  <li>
+                                                       <button className="link" onClick={() => {
+                                                            setLoggedInUser((e) => ({ ...e, login: false }))
+                                                       }}> logOut</button>
+                                                  </li>
+                                             </ul>
                                         </div>
                                    </div>
                               </div>
 
                               {/*   DROPDOWN FOR LOGOUT AND CHANGE PASSWORD */}
-                              {drop ?
-                                   <div className="drop">
-                                        <ul>
-                                             <li>
-                                                  <button className="btn"> change Password</button>
-                                             </li>
-                                             <li>
-                                                  <button className="btn" onClick={() => {
-                                                       setLoggedInUser((e) => ({ ...e, login: false }))
-                                                  }}> logOut</button>
-                                             </li>
-                                        </ul>
-                                   </div>
-                                   : ""
-                              }
                          </div>
 
                          {/*       NAVBAR          */}
-                         <div className="navbar" ref={(el) => (navbar.first = el)}>
+                         <div className="navbar" ref={(el) => (element.first = el)}>
                               <ul className="nav-links">
                                    <NavLink to='/dashboard'><li>Dashboard</li></NavLink>
                                    <NavLink to='/modules'><li>Training</li></NavLink>
                                    <li>Settings</li>
                               </ul>
                          </div>
-                         <div className="content" ref={(el) => (navbar.second = el)}></div>
+                         <div className="content" ref={(el) => (element.second = el)}></div>
                     </div>
                </div>
           </div>

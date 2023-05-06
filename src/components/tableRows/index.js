@@ -39,7 +39,7 @@ const TableRow = ({ id, title }) => {
                                    ?
                                    <NavLink to={`${id}`} > <button onClick={() => openModule(id - 1)} className='btn' >Review</button></NavLink>
                                    :
-                                   <button onClick={() => openModule(id - 1)} className='btn restricted' title="Please Complete previous module first." >Review</button>
+                                   <button className='btn restricted' title="Please Complete previous module first." >Review</button>
                          }
                     </td>
                </tr>
