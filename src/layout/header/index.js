@@ -88,8 +88,13 @@ const Header = () => {
                                              </div>
                                              <span className="after" ref={(el) => (element.arrow = el)}>&#9662;</span>
                                         </div>
+                                        {/*   DROPDOWN FOR LOGOUT AND CHANGE PASSWORD */}
+
                                         <div className="drop" ref={(el) => (element.drop = el)}>
                                              <ul>
+                                                  <li>
+                                                       <button className="link"> My Profile</button>
+                                                  </li>
                                                   <li>
                                                        <button className="link"> change Password</button>
                                                   </li>
@@ -103,7 +108,6 @@ const Header = () => {
                                    </div>
                               </div>
 
-                              {/*   DROPDOWN FOR LOGOUT AND CHANGE PASSWORD */}
                          </div>
 
                          {/*       NAVBAR          */}

@@ -1,10 +1,8 @@
-import React from "react";
-import { useState } from "react";
+import React, { useRef, useState } from "react";
 import Users from "../data/Users";
 
 export const Context = React.createContext(null);
 
-export let x = null;
 const Auth = ({ children }) => {
      const [userList, setUserList] = useState(Users);
      let [loggedInUser, setLoggedInUser] = useState({
@@ -15,15 +13,15 @@ const Auth = ({ children }) => {
           sub: []
      })
 
+     const interval = useRef(null);
+
      const openModule = (i) => {
-          let module = loggedInUser.sub.find(elem => elem.isActive);
-          (module?.isActive && (module.isActive = false));
           if (!loggedInUser.sub[i].isActive) {
                if (i === 0 || Boolean(loggedInUser.sub[i - 1].isCompleted)) {
                     loggedInUser.sub[i].isActive = true;
-                    clearInterval(x);
+                    clearInterval(interval.current);
                     document.title = loggedInUser.sub[i].title;
-                    x = setInterval(async () => {
+                    interval.current = setInterval(async () => {
 
                          if (loggedInUser.sub[i].progress >= loggedInUser.sub[i].duration) {
                               setLoggedInUser((prevState) => {
@@ -31,13 +29,11 @@ const Auth = ({ children }) => {
                                    updatedSub[i].isCompleted = true;
                                    return { ...prevState, sub: updatedSub };
                               });
-                              clearInterval(x)
+                              clearInterval(interval.current)
                               console.log(loggedInUser)
                          } else {
                               loggedInUser.sub[i].progress++;
-
                          }
-
                     }, 1000)
                } else {
                     console.log('Complete previous Module first')
@@ -49,7 +45,7 @@ const Auth = ({ children }) => {
      }
 
      return (
-          <Context.Provider value={{ loggedInUser, setLoggedInUser, userList, setUserList, openModule, x }}>
+          <Context.Provider value={{ loggedInUser, setLoggedInUser, userList, setUserList, openModule, interval }}>
                {children}
           </Context.Provider>
      )

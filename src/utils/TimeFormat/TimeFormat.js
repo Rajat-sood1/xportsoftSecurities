@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Context } from "../../middleware/auth";
 
 //        GETTING USER FROM GLOBAL STATE
@@ -11,6 +11,7 @@ const User = () => {
 //        DYNAMIC PROGRESS COUNTING FOR PARTICULAR MODULE
 export const Progress = (i) => {
      let modules = User();
+
      let hours = Math.floor(modules[i].progress / 3600).toString().padStart(2, '0');
      let minutes = Math.floor((modules[i].progress % 3600) / 60).toString().padStart(2, '0');
      let seconds = Math.floor(modules[i].progress % 60).toString().padStart(2, '0');
@@ -53,3 +54,27 @@ export const TotalDuration = () => {
      let seconds = Math.floor(duration % 60).toString().padStart(2, '0')
      return [hours, minutes, seconds];
 };
+
+// Running progress time
+const RProgress = ({ i }) => {
+     let modules = User();
+     const [timer, setTimer] = useState(0);
+     const interval = useRef();
+     useEffect(() => {
+          setTimer(modules[i].progress);
+          if (modules[i].progress < modules[i].duration) {
+               interval.current = setInterval(() => {
+                    setTimer((time) => time + 1);
+               }, 1000);
+          }
+          return () => {
+               clearInterval(interval.current);
+          }
+     }, [setTimer, i, modules])
+
+     let hours = Math.floor(timer / 3600).toString().padStart(2, '0');
+     let minutes = Math.floor((timer % 3600) / 60).toString().padStart(2, '0');
+     let seconds = Math.floor(timer % 60).toString().padStart(2, '0');
+     return <span> {hours + ":" + minutes + ":" + seconds}</span>
+};
+export default RProgress;
