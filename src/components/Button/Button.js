@@ -20,7 +20,7 @@ const Button = ({ i }) => {
                     ?
                     <NavLink to='quiz'><button className="btn">Take Quiz</button></NavLink>
                     :
-                    <button className="btn restricted">Take Quiz</button>
+                    <button className="btn restricted" title="Kindly, complete the duration of current Module.">Take Quiz</button>
             }
 
         </>

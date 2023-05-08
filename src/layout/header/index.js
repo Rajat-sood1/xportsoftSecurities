@@ -8,12 +8,10 @@ const Header = () => {
 
      const [drop, setDrop] = useState(false);
 
-     document.addEventListener('click', (e) => {
-          if (!element.drop.contains(e.target) && drop) {
-               element.drop.classList.add('none');
-               setDrop(!drop)
-          }
-     })
+     if (drop) {
+
+
+     }
 
      window.onscroll = () => {
           if (element.second !== null) {
@@ -28,6 +26,41 @@ const Header = () => {
                }
           }
      }
+
+     if (drop) {
+
+          document.addEventListener('click', (e) => {
+               console.log('document.clicked');
+
+               if (element.drop) {
+                    if (drop === true && !element.drop.contains(e.target) && !element.user.contains(e.target)) {
+
+                         element.drop.style.display = 'none';
+                         element.arrow.classList.remove('rotate');
+                         console.log('document.clicked inside');
+
+                         setDrop(false);
+
+                    }
+
+               }
+          })
+
+     }
+
+     const dropdown = () => {
+          if (drop) {
+
+               element.drop.style.display = 'none';
+               element.arrow.classList.remove('rotate');
+          }
+          else {
+               element.drop.style.display = 'block';
+               element.arrow.classList.add('rotate');
+          }
+          setDrop(!drop);
+     }
+
 
 
      return (
@@ -48,14 +81,14 @@ const Header = () => {
                               </div>
                               <div className="user">
                                    <div className="profile d-flex">
-                                        <div className="user-details d-flex " onClick={() => { drop ? element.drop.classList.add('none') && element.arrow.classList.remove('rotate') : element.drop.classList.remove('none') && element.arrow.classList.add('rotate'); setDrop(!drop) }} >
+                                        <div className="user-details d-flex " onClick={() => { dropdown(); }} ref={(el) => (element.user = el)} >
                                              <div>
                                                   <p>{loggedInUser.Name}</p>
                                                   <sub>student</sub>
                                              </div>
-                                             <span ref={(el) => (element.arrow = el)}>&#9662;</span>
+                                             <span className="after" ref={(el) => (element.arrow = el)}>&#9662;</span>
                                         </div>
-                                        <div className="drop none" ref={(el) => (element.drop = el)}>
+                                        <div className="drop" ref={(el) => (element.drop = el)}>
                                              <ul>
                                                   <li>
                                                        <button className="link"> change Password</button>

@@ -3,7 +3,7 @@ import Header from "../../layout/header";
 import { Navigate, Outlet, useMatch, useParams } from "react-router-dom";
 import { Context } from "../../middleware/auth";
 import Button from "../../components/Button/Button";
-import { Progress } from "../../utils/TimeFormat/TimeFormat";
+import { Duration, Progress } from "../../utils/TimeFormat/TimeFormat";
 
 const Module = () => {
      const { x } = useContext(Context)
@@ -31,6 +31,7 @@ const Module = () => {
      }
      const i = id - 1;
      const progress = Progress(i);
+     const duration = Duration(i);
      return (
           <>
                <Header position={'position'} />
@@ -44,18 +45,37 @@ const Module = () => {
                                    <h1>Module Slides</h1>
                               </div>
                               <div className="module-sec">
-                                   <div className="comp-title">
-                                        <h3>Welcome To The Security Guard Course</h3>
-                                        {progress[0] + ":" + progress[1] + ":" + progress[2]}
-                                   </div>
-                                   <iframe title="Module Slides" src={loggedInUser.sub[id - 1].url}></iframe>
-                                   <div className="q-link">
-                                        <div className="q-animate">
-                                             <p>Click here to submit <b>Quiz</b></p>
-                                             <span>&#11167;</span>
+                                   <div className="comp-title d-flex">
+
+                                        <div className="head-1">
+                                             <p className="duration">Duration: <span>{duration[0] + ":" + duration[1] + ":" + duration[2]}</span></p>
                                         </div>
-                                        <Button i={id - 1} />
+
+                                        <h3>Welcome To The Security Guard Course</h3>
+                                        <div className="head-2">
+
+                                             <p>Progress: <span> {progress[0] + ":" + progress[1] + ":" + progress[2]}</span></p>
+                                             <Button i={id - 1} />
+                                        </div>
+
                                    </div>
+                                   <div className="media">
+                                        <iframe className="m-content" title="Module Slides" src={loggedInUser.sub[id - 1].url}></iframe>
+
+                                   </div>
+                                   <div className="media">
+                                        <div className="comp-title">
+                                             <p>
+                                                  Welcome To The Security Guard Course
+                                             </p>
+                                        </div>
+                                        <video className="m-content" controls>
+                                             <source src={loggedInUser.sub[0].video} type="video/mp4" />
+                                             Your browser does not support the video tag.
+                                        </video>
+
+                                   </div>
+
                               </div>
                          </div>
                     </>

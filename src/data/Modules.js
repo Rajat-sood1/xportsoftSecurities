@@ -1,3 +1,4 @@
+import video from "../assets/videos/base64";
 import Questions from "./Questions";
 
 let Modules = [
@@ -7,9 +8,10 @@ let Modules = [
           title: 'Introduction to the Security Industry',
           url: "https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Ftraining%2Egoodlucksecurity%2Eca%3A443%2Fdata%2Fresources%2Flessons%2Fchapter%2Done%2Eppt&amp;wdAr=1.3333333333333333&amp;Embed=1",
           isCompleted: false,
+          video: video,
           isActive: false,
           Marks: 0,
-          duration: 3,
+          duration: 7200,
           progress: 0,
           quiz: Questions
 
@@ -22,7 +24,7 @@ let Modules = [
           isCompleted: false,
           isActive: false,
           Marks: 0,
-          duration: 7,
+          duration: 7200,
           progress: 0,
           quiz: Questions
 
