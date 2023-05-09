@@ -870,3 +870,82 @@ p.q-no {
      width: 83%;
      margin-top: 59px;
 }
+
+
+/*                  TOASTMSG COMPONENT                  */
+.popper {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+.p-content {
+     padding: 15px 20px 15px;
+     position: fixed;
+     top: -95px;
+     background: black;
+     color: white;
+     z-index: 1111;
+     width: 25%;
+     height: 15%;
+     border-radius: 4px;
+}
+
+.p-animation {
+     animation: down 3.7s linear forwards;
+
+}
+
+@keyframes down {
+     0% {
+          top: -95px;
+     }
+
+     3% {
+          top: 32px;
+     }
+
+     5%,
+     94% {
+          top: 9px;
+     }
+
+     97% {
+          top: 32px;
+     }
+
+     100% {
+          top: -95px;
+     }
+}
+
+.p-content .d-flex {
+     height: 100%;
+}
+
+.msg-status {
+     width: 15%;
+     height: 100%;
+}
+
+.error,
+.green {
+     background-size: 27px;
+     width: 33px;
+     height: 100%;
+}
+
+.error {
+     background: url(../images/remove.png) no-repeat center;
+}
+
+.green {
+     background: url(../images/check.png) no-repeat center;
+}
+
+.msg-content {
+     width: 100%;
+     text-align: center;
+     font-size: 1.110rem;
+     letter-spacing: 0.4px;
+}

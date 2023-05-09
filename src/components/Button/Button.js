@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 
 const Button = ({ i }) => {
-    const { loggedInUser } = useContext(Context);
+    const { loggedInUser, toaster } = useContext(Context);
     const [status, setStatus] = useState(false);
 
     useEffect(() => {
@@ -20,7 +20,7 @@ const Button = ({ i }) => {
                     ?
                     <NavLink to='quiz'><button className="btn">Take Quiz</button></NavLink>
                     :
-                    <button className="btn restricted" title="Kindly, complete the duration of current Module.">Take Quiz</button>
+                    <button className="btn restricted" onClick={() => { toaster(true, 'Please study current module till given duration!') }}>Take Quiz</button>
             }
 
         </>

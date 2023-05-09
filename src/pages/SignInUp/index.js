@@ -7,7 +7,7 @@ import Modules from "../../data/Modules";
 const SignInUp = () => {
 
      //   DESTRUCTURING OF GLOBAL STATES USING USECONTEXT
-     const { loggedInUser, setLoggedInUser, userList, setUserList } = useContext(Context);
+     const { loggedInUser, setLoggedInUser, userList, setUserList, toaster } = useContext(Context);
 
      //   CREATED STATES;
      const [clasess, setClass] = useState(' ');
@@ -18,7 +18,9 @@ const SignInUp = () => {
           e.preventDefault();
           let status = userList.find((user) => user.Email === userCredential.current.Semail.value);
           if (!status) {
-               if (!userCredential.current.Semail.value.includes('@')) { alert('The Email you provided is not correct.') }
+               if (!userCredential.current.Semail.value.includes('@')) {
+                    toaster(true, 'Invalid or Incorrect Email!');
+               }
                else {
 
                     setUserList((user) => ([...user, {
@@ -28,10 +30,11 @@ const SignInUp = () => {
                          login: false,
                          sub: JSON.parse(JSON.stringify(Modules))
                     }]))
-                    alert('You have been registered successfuly, You can login with your credentials now');
+
+                    toaster(true, false, 'You are successfuly registered!')
                }
           } else {
-               alert('we found an account linked with us using this ID ' + userCredential.current.Semail.value);
+               toaster(true, (userCredential.current.Semail.value + ' is already registered with us!'));
           }
      }
 
@@ -43,7 +46,14 @@ const SignInUp = () => {
           );
           if (loggingUser !== undefined) {
                if (loggingUser.email === loggedInUser.Email) {
-                    setLoggedInUser((user) => ({ ...user, login: true }))
+                    if (loggingUser.password === userCredential.current.password.value) {
+                         setLoggedInUser((user) => ({ ...user, login: true }))
+                         toaster(false, ('Welcome Back ' + loggedInUser.Name + "!"));
+                    } else {
+                         toaster(true, 'Invalid User Name or User Password!');
+
+                    }
+
                }
                else if (loggingUser.password === userCredential.current.password.value) {
                     setLoggedInUser((elem) => ({
@@ -54,15 +64,15 @@ const SignInUp = () => {
                          login: true,
                          sub: loggingUser.sub
                     }
-
                     ))
+                    toaster(false, ('Welcome Back ' + loggingUser.Name + "!"));
 
                } else {
-                    alert("Password Didn't match");
+                    toaster(true, "Invalid User Name Or Password!");
                     userCredential.current.password.value = "";
                }
           } else {
-               alert("User Doesn't Exist");
+               toaster(true, "Invalid Credentials!");
                userCredential.current.password.value = "";
                userCredential.current.email.value = "";
 

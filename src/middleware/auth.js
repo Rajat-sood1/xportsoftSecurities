@@ -1,9 +1,13 @@
 import React, { useRef, useState } from "react";
 import Users from "../data/Users";
+import ToastMsg from "../components/toaster/ToastMsg";
 
 export const Context = React.createContext(null);
 
 const Auth = ({ children }) => {
+     const interval = useRef(null);
+     const [msg, setMsg] = useState(null);
+
      const [userList, setUserList] = useState(Users);
      let [loggedInUser, setLoggedInUser] = useState({
           Name: null,
@@ -13,7 +17,19 @@ const Auth = ({ children }) => {
           sub: []
      })
 
-     const interval = useRef(null);
+
+
+
+     const toaster = async (error, content) => {
+          setMsg(
+               {
+                    error: error,
+                    content: content
+               }
+          );
+     };
+
+
 
      const openModule = (i) => {
           if (!loggedInUser.sub[i].isActive) {
@@ -35,19 +51,23 @@ const Auth = ({ children }) => {
                               loggedInUser.sub[i].progress++;
                          }
                     }, 1000)
-               } else {
-                    console.log('Complete previous Module first')
                }
-          }
-          else {
-               return console.log(loggedInUser.sub[i].title, "is already open")
           }
      }
 
      return (
-          <Context.Provider value={{ loggedInUser, setLoggedInUser, userList, setUserList, openModule, interval }}>
+          <Context.Provider value={{ loggedInUser, setLoggedInUser, userList, setUserList, openModule, interval, msg, setMsg, toaster }}>
+               {
+                    msg
+                         ?
+                         <ToastMsg ref={interval.first} />
+                         :
+                         ""
+
+               }
                {children}
           </Context.Provider>
      )
 }
-export default Auth;     
+export default Auth;
+

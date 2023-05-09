@@ -7,8 +7,7 @@ import { Navigate } from "react-router-dom";
 
 
 const Modules = () => {
-     const { loggedInUser, interval } = useContext(Context);
-     console.log(interval)
+     const { loggedInUser } = useContext(Context);
 
      useEffect(() => {
           document.title = "XPORTSOFT | MODULES";

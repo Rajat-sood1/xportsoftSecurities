@@ -5,7 +5,7 @@ import { Duration, Progress } from '../../utils/TimeFormat/TimeFormat';
 
 
 const TableRow = ({ id, title }) => {
-     const { loggedInUser, openModule } = useContext(Context);
+     const { loggedInUser, openModule, toaster } = useContext(Context);
      const i = id - 1;
      const progress = Progress(i);
      const duration = Duration(i);
@@ -35,11 +35,19 @@ const TableRow = ({ id, title }) => {
 
                     <td className="w-25 border" >
                          {
-                              id === 1 || loggedInUser.sub[id - 2].Marks >= 2
+                              id === 1 || loggedInUser.sub[id - 2].isCompleted
                                    ?
-                                   <NavLink to={`${id}`} > <button onClick={() => openModule(id - 1)} className='btn' >Review</button></NavLink>
+                                   id === 1 || loggedInUser.sub[id - 2].Marks >= 2
+                                        ? !(loggedInUser.sub.find((el) => el.isActive)?.isActive)
+                                             ?
+                                             <NavLink to={`${id}`} > <button onClick={() => openModule(id - 1)} className='btn' >Review</button></NavLink>
+                                             :
+                                             <button className='btn restricted' onClick={() => toaster(true, 'Another module is Active Currently!')}>Review</button>
+                                        :
+                                        <button className='btn restricted' onClick={() => toaster(true, ('Please pass Quiz for Section...' + i + ' 50% Marks are necessary!'))}  >Review</button>
                                    :
-                                   <button className='btn restricted' title="Please Complete previous module first." >Review</button>
+
+                                   <button className='btn restricted' onClick={() => toaster(true, ('Section ' + (id - 1) + ' is not completed yet!'))}  >Review</button>
                          }
                     </td>
                </tr>
