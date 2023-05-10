@@ -11,7 +11,7 @@ const ToastMsg = (_, ref) => {
         p.current.classList.remove('p-animaion');
         setTimeout(() => {
             p.current.classList.add('p-animation');
-        }, 0);
+        }, 100);
 
         setTimeout(() => {
             setMsg(null)
@@ -22,8 +22,8 @@ const ToastMsg = (_, ref) => {
     return (
         <>
 
-            <div className="popper">
-                <div className="p-content" ref={p}>
+            <div className="popper" ref={p}>
+                <div className="p-content" >
                     <div className="d-flex">
                         <div className="msg-status">
                             <div className={msg.error ? 'error' : "green"}></div>
