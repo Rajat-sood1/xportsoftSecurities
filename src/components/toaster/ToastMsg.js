@@ -3,8 +3,9 @@ import { Context } from "../../middleware/auth";
 
 
 
-const ToastMsg = (_, ref) => {
+const ToastMsg = () => {
     const p = useRef(null);
+
     const { msg, setMsg } = useContext(Context);
 
     useEffect(() => {
