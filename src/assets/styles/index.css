@@ -955,3 +955,36 @@ p.q-no {
      letter-spacing: 0.4px;
      padding: 5px 5px;
 }
+
+/*             LOADING COMPONENT            */
+.loading .logo {
+     animation: loading 3s linear infinite;
+     width: 200px;
+     height: 200px;
+     margin-bottom: 20px;
+}
+
+.loading {
+     display: flex;
+     flex-direction: column;
+}
+
+.loading p {
+     color: var(--primary-color);
+     font-size: 18px;
+     font-weight: 550;
+}
+
+@keyframes loading {
+     0% {
+          transform: rotateY(0deg);
+     }
+
+     50% {
+          transform: rotateY(80deg);
+     }
+
+     100% {
+          transform: rotateY(360deg);
+     }
+}

@@ -1,36 +1,61 @@
+import { Suspense, lazy, useState } from 'react';
 import { useRoutes } from 'react-router-dom';
-import SignInUp from '../pages/SignInUp';
-import Dashboard from '../pages/Dashboard';
-import Modules from '../pages/modules';
-import Module from '../pages/Module';
-import QuizView from '../pages/Quiz';
+import Loading from '../utils/Loading';
+import { useEffect } from 'react';
 
-const Routes = () =>{
-     const routes = useRoutes([
-     {
+
+//   CONFIGURE LAZY LOAD TO OPTIMIZE INITIAL LOAD TIME
+const SignInUp = lazy(() => import('../pages/SignInUp'));
+const Dashboard = lazy(() => import('../pages/Dashboard'));
+const Modules = lazy(() => import('../pages/modules'));
+const Module = lazy(() => import('../pages/Module'));
+const QuizView = lazy(() => import('../pages/Quiz'));
+
+
+
+function LazyLoadComponent({ loadingComponent, element }) {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // Simulate a delay to show the loading component
+
+  setTimeout(() => {
+    setIsLoaded(true);
+  }, 2000);
+
+  return (
+    <Suspense fallback={loadingComponent}>
+      {isLoaded ? element : loadingComponent}
+    </Suspense>
+  );
+}
+
+//  CUSTOM ROUTES USING USEROUTES HOOK
+const Routes = () => {
+  const routes = useRoutes([
+    {
       path: '/',
-      element: (<div className="body"><SignInUp/></div>)
+      element: (<LazyLoadComponent loadingComponent={<Loading />} element={<div className="body"><SignInUp /></div>} />)
     },
     {
       path: '/dashboard',
-      element: (<div className="component"><Dashboard /></div>)
+      element: (<LazyLoadComponent loadingComponent={<Loading />} element={<div className="component"><Dashboard /></div>} />)
     },
     {
       path: '/modules',
-      element: (<div className="component"><Modules /></div>)
+      element: (<LazyLoadComponent loadingComponent={<Loading />} element={<div className="component"><Modules /></div>} />)
     },
     {
-         path: '/modules/:id',
-         element:(<div className="component"><Module /></div>),
-         children:[
-          {
-            path:'quiz',
-            element: (<QuizView />)
-          }
-         ]
-    },
-]);
-return routes
-} 
+      path: '/modules/:id',
+      element: (<LazyLoadComponent loadingComponent={<Loading />} element={<div className="component"><Module /></div>} />),
+      children: [
+        {
+          path: 'quiz',
+          element: (<QuizView />)
+        }
+      ]
+    }
+  ]);
+  return routes
+}
 
 export default Routes;

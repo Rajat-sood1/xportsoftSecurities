@@ -16,13 +16,10 @@ const Module = () => {
      const match = useMatch({ path: '/modules/:id/quiz' });
 
 
-
-     console.log("Module component")
      const intervalId = interval.current;
-
-     console.log(intervalId)
      useEffect(() => {
           return () => {
+               console.log('Module Unmounted')
                clearInterval(intervalId)
                setLoggedInUser((user) => {
                     const updatedData = [...user.sub];
@@ -30,7 +27,7 @@ const Module = () => {
                     return { ...user, sub: updatedData }
                })
           }
-     }, [interval, intervalId, loggedInUser, id, setLoggedInUser])
+     }, [id, setLoggedInUser])
 
 
 

@@ -13,6 +13,9 @@ const SignInUp = () => {
      const [clasess, setClass] = useState(' ');
      const userCredential = useRef({});
 
+     // IMPLEMENTING NAVIGATION ON USER LOGIN
+     // const navigate = useNavigate();
+
      //   NEW USER SIGN UP FUNCTION
      const SignUp = (e) => {
           e.preventDefault();
@@ -31,7 +34,7 @@ const SignInUp = () => {
                          sub: JSON.parse(JSON.stringify(Modules))
                     }]))
 
-                    toaster(true, false, 'You are successfuly registered!')
+                    toaster(false, 'You are successfuly registered!')
                }
           } else {
                toaster(true, (userCredential.current.Semail.value + ' is already registered with us!'));
@@ -49,6 +52,7 @@ const SignInUp = () => {
                     if (loggingUser.password === userCredential.current.password.value) {
                          setLoggedInUser((user) => ({ ...user, login: true }))
                          toaster(false, ('Welcome Back ' + loggedInUser.Name + "!"));
+
                     } else {
                          toaster(true, 'Invalid User Name or User Password!');
 

@@ -43,11 +43,16 @@ const Auth = ({ children }) => {
      const openModule = (i) => {
           if (!loggedInUser.sub[i].isActive) {
                if (i === 0 || Boolean(loggedInUser.sub[i - 1].isCompleted)) {
-                    loggedInUser.sub[i].isActive = true;
-                    clearInterval(interval.current);
-                    document.title = loggedInUser.sub[i].title;
-                    interval.current = setInterval(async () => {
 
+                    loggedInUser.sub[i].isActive = true;
+
+                    //  CLEAR RUNNING DURATION FOR ANY OTHER RUNNING MODULE
+                    clearInterval(interval.current);
+
+                    document.title = loggedInUser.sub[i].title;
+
+                    //  START TIMER FOR DURATION OF MODULE
+                    interval.current = setInterval(async () => {
                          if (loggedInUser.sub[i].progress >= loggedInUser.sub[i].duration) {
                               setLoggedInUser((prevState) => {
                                    const updatedSub = [...prevState.sub];
@@ -55,7 +60,6 @@ const Auth = ({ children }) => {
                                    return { ...prevState, sub: updatedSub };
                               });
                               clearInterval(interval.current)
-                              console.log(loggedInUser)
                          } else {
                               loggedInUser.sub[i].progress++;
                          }
@@ -81,4 +85,3 @@ const Auth = ({ children }) => {
      )
 }
 export default Auth;
-
