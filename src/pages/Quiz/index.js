@@ -6,14 +6,14 @@ import { useParams } from 'react-router-dom';
 
 const QuizView = () => {
     const { id } = useParams();
-    const { loggedInUser } = useContext(Context);
+    const { loggedInUser, toaster } = useContext(Context);
     const Questions = loggedInUser.sub[id - 1].quiz;
-
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [answers, setAnswers] = useState({});
     const [showResults, setShowResults] = useState(false);
     const [showNext, setShowNext] = useState(false);
+    const [score, setScore] = useState(0);
 
     const handleAnswerSelect = (answer) => {
         setAnswers({
@@ -24,10 +24,26 @@ const QuizView = () => {
     };
 
     const handleNextClick = () => {
+        let marks = 0;
         if (currentQuestionIndex < Questions.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
         } else {
+            for (const [QuestionId, selectedAnswer] of Object.entries(answers)) {
+                const Question = Questions.find((q) => q.id.toString() === QuestionId);
+                if (Question.answer === selectedAnswer) {
+                    marks++;
+                }
+            };
             setShowResults(true);
+            (
+                marks >= 2
+                    ?
+                    toaster(false, ' Congratulations! You have unlocked your next module.')
+                    :
+                    toaster(true, 'Oops! 50% or above are mandatory to unlock next module.')
+            )
+            loggedInUser.sub[id - 1].Marks = score;
+            setScore(marks);
         }
         setShowNext(false)
     };
@@ -36,18 +52,6 @@ const QuizView = () => {
         setCurrentQuestionIndex(0);
         setAnswers({});
         setShowResults(false);
-    };
-
-    const getScore = () => {
-        let score = 0;
-        for (const [QuestionId, selectedAnswer] of Object.entries(answers)) {
-            const Question = Questions.find((q) => q.id.toString() === QuestionId);
-            if (Question.answer === selectedAnswer) {
-                score++;
-            }
-        };
-        loggedInUser.sub[id - 1].Marks = score;
-        return score;
     };
 
     return (
@@ -64,7 +68,7 @@ const QuizView = () => {
                     {
                         showResults
                             ?
-                            <Results getScore={getScore} Questions={Questions} answers={answers} handleRestartClick={handleRestartClick} />
+                            <Results score={score} Questions={Questions} answers={answers} handleRestartClick={handleRestartClick} />
                             :
                             <Quiz Questions={Questions} answers={answers} handleAnswerSelect={handleAnswerSelect} handleNextClick={handleNextClick} currentQuestionIndex={currentQuestionIndex} next={showNext} />
                     }

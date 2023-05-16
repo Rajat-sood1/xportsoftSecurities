@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Quiz = ({ Questions, answers, handleAnswerSelect, handleNextClick, currentQuestionIndex, next }) => {
-     console.log(Questions)
      const Question = Questions[currentQuestionIndex];
      return (
           <div>
@@ -19,13 +18,13 @@ const Quiz = ({ Questions, answers, handleAnswerSelect, handleNextClick, current
                                         className='radio'
                                         placeholder='data'
                                    />
-                                   <span>{String.fromCharCode(65+index)} :  {option}</span>
+                                   <span>{String.fromCharCode(65 + index)} :  {option}</span>
                               </label>
                          </li>
                     ))}
                </ul>
-               <div className='q-next'> 
-                    {next ? <button className='btn' onClick={handleNextClick}>Next</button> : ""}
+               <div className='q-next'>
+                    {next ? currentQuestionIndex === 3 ? <button className='btn' onClick={handleNextClick}>Submit</button> : <button className='btn' onClick={handleNextClick}>Next</button> : ""}
                </div>
           </div>
      );

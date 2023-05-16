@@ -19,7 +19,6 @@ const Module = () => {
      const intervalId = interval.current;
      useEffect(() => {
           return () => {
-               console.log('Module Unmounted')
                clearInterval(intervalId)
                setLoggedInUser((user) => {
                     const updatedData = [...user.sub];

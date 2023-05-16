@@ -1,7 +1,6 @@
-import { Suspense, lazy, useState } from 'react';
+import { Suspense, lazy, useEffect, useState } from 'react';
 import { useRoutes } from 'react-router-dom';
 import Loading from '../utils/Loading';
-import { useEffect } from 'react';
 
 
 //   CONFIGURE LAZY LOAD TO OPTIMIZE INITIAL LOAD TIME
@@ -17,10 +16,17 @@ function LazyLoadComponent({ loadingComponent, element }) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Simulate a delay to show the loading component
+  useEffect(() => {
+    console.log('useEffect called');
+    setIsLoaded(false);
+    setTimeout(() => {
+      setIsLoaded(true);
+      console.log('useEffect called after 2000');
 
-  setTimeout(() => {
-    setIsLoaded(true);
-  }, 2000);
+    }, 2000);
+
+
+  }, [])
 
   return (
     <Suspense fallback={loadingComponent}>

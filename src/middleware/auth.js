@@ -28,7 +28,7 @@ const Auth = ({ children }) => {
 
 
      //    SHOW ERROR OR SUCCESS MESSAGE IN TOASTER
-     const toaster = async (error, content) => {
+     const toaster = (error, content) => {
           setMsg(
                {
                     error: error,
