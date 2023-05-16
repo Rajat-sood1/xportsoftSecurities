@@ -11,7 +11,7 @@ let Modules = [
           video: video,
           isActive: false,
           Marks: 0,
-          duration: 7,
+          duration: 7200,
           progress: 0,
           quiz: Questions
 
