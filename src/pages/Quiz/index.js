@@ -42,7 +42,7 @@ const QuizView = () => {
                     :
                     toaster(true, 'Oops! 50% or above are mandatory to unlock next module.')
             )
-            loggedInUser.sub[id - 1].Marks = score;
+            loggedInUser.sub[id - 1].Marks = marks;
             setScore(marks);
         }
         setShowNext(false)
@@ -68,7 +68,7 @@ const QuizView = () => {
                     {
                         showResults
                             ?
-                            <Results score={score} Questions={Questions} answers={answers} handleRestartClick={handleRestartClick} />
+                            <Results score={score} handleRestartClick={handleRestartClick} />
                             :
                             <Quiz Questions={Questions} answers={answers} handleAnswerSelect={handleAnswerSelect} handleNextClick={handleNextClick} currentQuestionIndex={currentQuestionIndex} next={showNext} />
                     }

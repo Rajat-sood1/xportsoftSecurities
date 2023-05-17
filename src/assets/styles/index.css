@@ -871,6 +871,22 @@ p.q-no {
      margin-top: 59px;
 }
 
+/*         QUIZ RESULT         */
+
+.d-flex.result {
+     justify-content: center;
+}
+
+.d-flex.result .error,
+.result .green {
+     width: 4%;
+}
+
+.result~.q-next {
+     text-align: center;
+     width: 100%;
+}
+
 
 /*                  TOASTMSG COMPONENT                  */
 .popper {

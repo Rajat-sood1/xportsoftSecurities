@@ -1,25 +1,37 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 
 
 
-const Results = ({ getScore, Questions, answers, handleRestartClick, score }) => {
+const Results = ({ handleRestartClick, score }) => {
 
     return (
-        <div>
+        <>
             <h2>Results</h2>
-            <p>You scored {score} out of {Questions.length}.</p>
-            <ul>
-                {Questions.map((Question) => (
-                    <li key={Question.id} className="radio">
-                        <p>{Question.text} - Correct answer: {Question.answer}, Your answer: {answers[Question.id]}</p>
-                    </li>
-                ))}
-            </ul>
-            <div className='q-next'>
-                <button className='btn' onClick={handleRestartClick} >Restart</button>
+            <div className='d-flex result' style={score >= 2 ? { color: 'green' } : { color: 'red' }}>
+                <div className={score >= 2 ? 'green' : 'error'}></div>
+                {
+                    score >= 2
+                        ?
+                        <p>Congratulations! You scored {score * 25} out of {100}. Next Module has been unlocked. </p>
+                        :
+                        <p>Oops! You scored {score * 25} out of {100}. You need to obtain atleast 50% to unlock next module. </p>
+                }
             </div>
-        </div>
+            <div className='q-next'>
+                {
+                    score >= 2
+                        ?
+                        <NavLink to='/modules'>
+                            <button className='btn' onClick={handleRestartClick} >Modules</button>
+                        </NavLink>
+                        :
+                        <button className='btn' onClick={handleRestartClick} >Restart</button>
+
+                }
+            </div>
+        </>
     );
 };
 
